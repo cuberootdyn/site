@@ -34,3 +34,4 @@ No build step required. Simply open `index.html` in your browser or serve with a
 ```bash
 npx serve .
 ```
+# dynamics
