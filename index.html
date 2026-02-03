@@ -4,17 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cube Root Dynamics - Security Without The Complexity</title>
+    <title>Cube Root Dynamics - Enterprise Cybersecurity for Growing Businesses</title>
     <meta name="description"
-        content="Comprehensive cybersecurity protection tailored for small businesses. Advanced security made simple and affordable, starting at $1,500/month. HIPAA, SOX compliance.">
+        content="Fortune 500-level cybersecurity tailored for agile businesses. Comprehensive threat protection, compliance management, and 24/7 monitoring.">
     <meta name="keywords"
-        content="cybersecurity, small business security, HIPAA compliance, SOX compliance, managed security services, affordable cybersecurity">
+        content="enterprise cybersecurity, managed security detection, compliance management, risk assessment, business continuity">
+    <link rel="canonical" href="https://cuberootdynamics.com">
 
-    <meta property="og:title" content="Cube Root Dynamics - Security Without The Complexity">
+    <meta property="og:title" content="Cube Root Dynamics - Defending Your Future">
     <meta property="og:description"
-        content="Advanced cybersecurity protection starting at $1,500/month. Comprehensive security made simple.">
-    <meta property="og:image" content="/assets/images/og-image.jpg">
-    <meta property="og:type" content="website">
+        content="Fortune 500-level cybersecurity tailored for agile businesses. We manage the complexity so you can focus on growth.">
+    <meta property="og:image" content="https://cuberootdynamics.com/og-image.jpg">
+    <meta property="og:url" content="https://cuberootdynamics.com">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +23,614 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        :root {
+            --primary-red: #dc2626;
+            --dark-gray: #374151;
+            --electric-blue: #3b82f6;
+            --light-gray: #f9fafb;
+            --text-gray: #6b7280;
+            --danger-red: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--light-gray);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-top: 4px solid var(--primary-red);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-gray);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .cta-button {
+            background: var(--primary-red);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-red);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #111827 0%, #374151 50%, #7f1d1d 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='20' cy='20' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--dark-gray);
+        }
+
+        .threat-section {
+            background: #fef2f2;
+            border: 2px solid #fecaca;
+            padding: 3rem 0;
+            position: relative;
+        }
+
+        .threat-section::before {
+            content: '⚠️';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+        }
+
+        .threat-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .threat-section h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.5rem;
+            color: var(--danger-red);
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+        }
+
+        .threat-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--primary-red);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            margin-top: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .security-services {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .security-services h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            position: relative;
+            border-left: 5px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card:nth-child(odd) {
+            border-left-color: var(--primary-red);
+        }
+
+        .service-card:nth-child(even) {
+            border-left-color: var(--electric-blue);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .service-card:nth-child(odd) .service-icon {
+            background: var(--primary-red);
+        }
+
+        .service-card:nth-child(even) .service-icon {
+            background: var(--electric-blue);
+        }
+
+        .service-card h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .pricing {
+            padding: 4rem 0;
+            background: var(--light-gray);
+        }
+
+        .pricing h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-gray);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--primary-red);
+            transform: scale(1.05);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-red);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .plan-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .plan-features li:before {
+            content: "🛡️";
+            margin-right: 1rem;
+        }
+
+        .plan-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--dark-gray);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .plan-button:hover {
+            background: #1f2937;
+        }
+
+        .featured .plan-button {
+            background: var(--primary-red);
+        }
+
+        .featured .plan-button:hover {
+            background: #b91c1c;
+        }
+
+        .contact {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .contact h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-gray);
+        }
+
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--light-gray);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-red);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .form-submit:hover {
+            background: #b91c1c;
+        }
+
+        footer {
+            background: var(--dark-gray);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #4b5563;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 80%;
+                text-align: center;
+            }
+
+            .services-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .threat-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .emergency-banner {
+            background: linear-gradient(90deg, var(--primary-red), #b91c1c);
+            color: white;
+            padding: 0.5rem 0;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .emergency-banner a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
@@ -52,12 +660,12 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="fade-in">Security Without The Complexity</h1>
-                <p class="fade-in">Comprehensive cybersecurity protection tailored for small businesses. Advanced
-                    security made simple and affordable. Don't be the next security statistic.</p>
+                <h1 class="fade-in">Defending Your Future, Today</h1>
+                <p class="fade-in">Fortune 500-level cybersecurity tailored for agile businesses. We manage the
+                    constantly evolving threat landscape so you can focus on driving innovation and growth.</p>
                 <div class="hero-buttons fade-in">
-                    <a href="#contact" class="btn-primary">Free Security Assessment</a>
-                    <a href="#pricing" class="btn-secondary">View Security Packages</a>
+                    <a href="#contact" class="btn-primary">Schedule Security Consultation</a>
+                    <a href="#solutions" class="btn-secondary">Explore Solutions</a>
                 </div>
             </div>
         </div>
@@ -84,8 +692,8 @@
                         <div class="stat-label">of small businesses close within 6 months of a cyberattack</div>
                     </div>
                     <div class="stat-box fade-in">
-                        <div class="stat-number">$1,500</div>
-                        <div class="stat-label">monthly investment to prevent these statistics</div>
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Monitoring required to prevent today's sophisticated attacks</div>
                     </div>
                 </div>
             </div>
@@ -138,74 +746,72 @@
 
     <section id="pricing" class="pricing">
         <div class="container">
-            <h2 class="fade-in">Security Investment That Pays Off</h2>
-            <p style="text-align: center; font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">One security incident
-                costs more than years of protection. Invest in prevention, not recovery.</p>
+            <h2 class="fade-in">Strategic Security Partnerships</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">We don't sell
+                products; we deliver comprehensive risk reduction and business continuity.</p>
 
             <div class="pricing-grid">
                 <div class="pricing-card fade-in">
-                    <h3 style="font-family: Roboto; font-size: 1.8rem; color: #374151; margin-bottom: 1rem;">Secure
-                        Foundations</h3>
-                    <div class="price">$1,500<span style="font-size: 1rem; color: #6b7280;">/month</span></div>
-                    <div class="price-period">Essential protection for small teams</div>
+                    <h3 style="font-family: Roboto; font-size: 1.8rem; color: #374151; margin-bottom: 1rem;">Essential
+                        Defense</h3>
+                    <div class="price-period">Foundational protection for emerging teams</div>
                     <ul class="plan-features">
-                        <li>Security assessment & baseline establishment</li>
-                        <li>Endpoint protection management</li>
-                        <li>Security awareness training (quarterly)</li>
+                        <li>Security posture assessment</li>
+                        <li>Next-gen endpoint protection</li>
+                        <li>Quarterly security awareness training</li>
                         <li>Compliance monitoring dashboard</li>
-                        <li>Monthly security reports</li>
+                        <li>Monthly executive reporting</li>
                         <li>Incident response coordination</li>
-                        <li>Business hours security support</li>
                     </ul>
-                    <button class="plan-button" onclick="openContactForm('Secure Foundations')">Get Protected</button>
+                    <button class="plan-button" onclick="openContactForm('Essential Defense')">Request
+                        Consultation</button>
                 </div>
 
                 <div class="pricing-card featured fade-in">
                     <div class="featured-badge">Recommended</div>
                     <h3 style="font-family: Roboto; font-size: 1.8rem; color: #374151; margin-bottom: 1rem;">Advanced
-                        Security</h3>
-                    <div class="price">$2,250<span style="font-size: 1rem; color: #6b7280;">/month</span></div>
-                    <div class="price-period">Comprehensive protection for growing businesses</div>
+                        Resilience</h3>
+                    <div class="price-period">Comprehensive security for established organizations</div>
                     <ul class="plan-features">
-                        <li>Everything in Secure Foundations</li>
-                        <li>24/7 security operations center monitoring</li>
-                        <li>Advanced threat detection & response</li>
-                        <li>NIST/ISO framework implementation</li>
-                        <li>Vulnerability management program</li>
-                        <li>Security policy development</li>
-                        <li>Bi-weekly security reviews</li>
-                        <li>Priority incident response</li>
+                        <li>Everything in Essential Defense</li>
+                        <li>24/7 Security Operations Center (SOC)</li>
+                        <li>Advanced threat hunting & neutralization</li>
+                        <li>NIST/ISO framework alignment</li>
+                        <li>Continuous vulnerability management</li>
+                        <li>Strategic policy development</li>
+                        <li>Priority incident response SLA</li>
                     </ul>
-                    <button class="plan-button" onclick="openContactForm('Advanced Security')">Get Protected</button>
+                    <button class="plan-button" onclick="openContactForm('Advanced Resilience')">Request
+                        Consultation</button>
                 </div>
 
                 <div class="pricing-card fade-in">
                     <h3 style="font-family: Roboto; font-size: 1.8rem; color: #374151; margin-bottom: 1rem;">Enterprise
-                        Security</h3>
-                    <div class="price">$3,000<span style="font-size: 1rem; color: #6b7280;">/month</span></div>
-                    <div class="price-period">Maximum protection for regulated industries</div>
+                        Assurance</h3>
+                    <div class="price-period">Maximum compliance & oversight for regulated industries</div>
                     <ul class="plan-features">
-                        <li>Everything in Advanced Security</li>
-                        <li>Custom compliance frameworks (HIPAA, SOX, etc.)</li>
+                        <li>Everything in Advanced Resilience</li>
+                        <li>Custom compliance validation (HIPAA, SOX)</li>
                         <li>Quarterly penetration testing</li>
-                        <li>Business continuity planning</li>
-                        <li>Dedicated security analyst</li>
-                        <li>Executive security reporting</li>
-                        <li>Emergency incident response (15-minute SLA)</li>
-                        <li>Compliance audit support</li>
+                        <li>Business continuity & disaster recovery</li>
+                        <li>Dedicated Virtual CISO (vCISO)</li>
+                        <li>Board-level risk reporting</li>
+                        <li>15-minute Emergency Response SLA</li>
                     </ul>
-                    <button class="plan-button" onclick="openContactForm('Enterprise Security')">Get Protected</button>
+                    <button class="plan-button" onclick="openContactForm('Enterprise Assurance')">Request
+                        Consultation</button>
                 </div>
             </div>
 
             <div style="text-align: center; margin-top: 3rem;">
-                <p style="color: #6b7280; margin-bottom: 1rem;">🚨 <strong>Emergency Response:</strong> All plans
-                    include 24/7 incident response</p>
-                <p style="color: #6b7280;">💰 <strong>Cost Comparison:</strong> One breach costs more than 10+ years of
-                    protection</p>
+                <p style="color: #6b7280; margin-bottom: 1rem;">🚨 <strong>Rapid Response:</strong> All partnerships
+                    include 24/7 incident intake</p>
+                <p style="color: #6b7280;">💰 <strong>ROI Focus:</strong> Security is an investment in your company's
+                    longevity and reputation.</p>
             </div>
         </div>
     </section>
+
 
     <section id="contact" class="contact">
         <div class="container">
@@ -226,30 +832,34 @@
                             <input type="text" id="company" name="company" placeholder="Company Name" required>
                         </div>
                         <div class="form-group">
-                            <select id="employees" name="employees" required>
-                                <option value="">Number of Employees</option>
-                                <option value="1-5">1-5 employees</option>
-                                <option value="6-15">6-15 employees</option>
-                                <option value="16-35">16-35 employees</option>
-                                <option value="36-50">36-50 employees</option>
-                                <option value="51+">51+ employees</option>
+                            <select id="industry" name="industry" required>
+                                <option value="">Select Industry</option>
+                                <option value="Healthcare">Healthcare</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Legal">Legal</option>
+                                <option value="Manufacturing">Manufacturing</option>
+                                <option value="Professional Services">Professional Services</option>
+                                <option value="Retail">Retail</option>
+                                <option value="Education">Education</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <select id="interest" name="interest" required>
-                            <option value="">Service Interest</option>
+                            <option value="">Security Package Interest</option>
                             <option value="Secure Foundations">Secure Foundations ($1,500/month)</option>
                             <option value="Advanced Security">Advanced Security ($2,250/month)</option>
                             <option value="Enterprise Security">Enterprise Security ($3,000/month)</option>
-                            <option value="Assessment">Free Security Assessment</option>
+                            <option value="Emergency Response">Emergency - Need Help Now</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <textarea id="challenges" name="challenges"
-                            placeholder="Current security concerns or compliance needs" rows="4"></textarea>
+                            placeholder="Describe your current security challenges and compliance requirements"
+                            rows="4"></textarea>
                     </div>
-                    <button type="submit" class="form-submit">Request Security Assessment</button>
+                    <button type="submit" class="form-submit">Schedule Your Free Security Assessment</button>
                 </form>
             </div>
         </div>
@@ -259,43 +869,152 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Cube Root Dynamics</h3>
-                    <p style="color: #9ca3af; line-height: 1.6;">Advanced cybersecurity solutions tailored for the
-                        modern threat landscape.</p>
+                    <div class="logo" style="color: white; margin-bottom: 1rem;">Cube Root Dynamics</div>
+                    <p style="color: #9ca3af;">Security without the complexity for growing businesses. Protecting what
+                        matters most to you.</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Services</h3>
+                    <h3>Security Services</h3>
                     <ul>
-                        <li><a href="#">Managed Security</a></li>
-                        <li><a href="#">Compliance</a></li>
-                        <li><a href="#">Incident Response</a></li>
-                        <li><a href="#">Training</a></li>
+                        <li><a href="#security">24/7 Monitoring</a></li>
+                        <li><a href="#security">Compliance Management</a></li>
+                        <li><a href="#security">Incident Response</a></li>
+                        <li><a href="#security">Security Training</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Legal</h3>
+                    <h3>Resources</h3>
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">SLA</a></li>
+                        <li><a href="#contact">Security Assessment</a></li>
+                        <li><a href="#" onclick="alert('Compliance guide coming soon!')">Compliance Guide</a></li>
+                        <li><a href="#" onclick="alert('Threat intelligence coming soon!')">Threat Intelligence</a></li>
+                        <li><a href="#pricing">Security Packages</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Contact</h3>
+                    <h3>Emergency Contact</h3>
                     <ul>
-                        <li><a href="#">support@cuberootdynamics.com</a></li>
-                        <li><a href="#">(555) 123-4567</a></li>
-                        <li><a href="#">Emergency: (555) 911-SAFE</a></li>
+                        <li><a href="mailto:riley@cuberootdynamics.com">riley@cuberootdynamics.com</a></li>
+                        <li><a href="tel:+15559115ecure">Emergency: (555) 911-SECURE</a></li>
+                        <li><a href="tel:+15551235afe">Office: (555) 123-SAFE</a></li>
+                        <li><a href="#contact">Schedule Assessment</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; 2026 Cube Root Dynamics. All rights reserved.
+                <p>&copy; 2024 Cube Root Dynamics LLC. All rights reserved. | Security without the complexity.</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function openContactForm(plan) {
+            document.getElementById('interest').value = plan;
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('fullName').focus();
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+
+            if (!data.fullName || !data.email || !data.company) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            const submitButton = document.querySelector('.form-submit');
+            const originalText = submitButton.textContent;
+
+            submitButton.textContent = 'Scheduling...';
+            submitButton.disabled = true;
+
+            setTimeout(() => {
+                if (data.interest === 'Emergency - Need Help Now') {
+                    alert('EMERGENCY RESPONSE ACTIVATED\n\nOur security team will contact you within 15 minutes.\n\nIf this is an active breach, call our emergency line immediately:\n(555) 911-SECURE');
+                } else {
+                    alert('Thank you! Our security team will contact you within 2 hours to schedule your free assessment.\n\nWe\'ll analyze your current security posture and provide a detailed risk assessment with specific recommendations.');
+                }
+
+                event.target.reset();
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+
+                console.log('Form data:', data);
+            }, 2000);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(() => {
+                document.querySelectorAll('.hero .fade-in').forEach((el, index) => {
+                    setTimeout(() => el.classList.add('visible'), index * 200);
+                });
+            }, 300);
+
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    const isOdd = Array.from(card.parentNode.children).indexOf(card) % 2 === 0;
+                    card.style.borderLeftWidth = '8px';
+                    card.style.borderLeftColor = isOdd ? '#dc2626' : '#3b82f6';
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.borderLeftWidth = '5px';
+                });
+            });
+
+            const emergencyKeywords = ['help', 'breach', 'hacked', 'emergency', 'incident'];
+            document.getElementById('challenges').addEventListener('input', function () {
+                const text = this.value.toLowerCase();
+                const hasEmergencyKeyword = emergencyKeywords.some(keyword => text.includes(keyword));
+
+                if (hasEmergencyKeyword) {
+                    this.style.borderColor = '#ef4444';
+                    this.style.borderWidth = '3px';
+                } else {
+                    this.style.borderColor = '#e5e7eb';
+                    this.style.borderWidth = '2px';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
