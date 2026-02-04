@@ -4,33 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cube Root Dynamics - Enterprise Cybersecurity for Growing Businesses</title>
+    <title>Cube Root Dynamics | Professional Offensive Security</title>
     <meta name="description"
-        content="Fortune 500-level cybersecurity tailored for agile businesses. Comprehensive threat protection, compliance management, and 24/7 monitoring.">
+        content="We identify security risks before they become breaches. Comprehensive penetration testing and security assessment services for forward-thinking organizations.">
     <meta name="keywords"
-        content="enterprise cybersecurity, managed security detection, compliance management, risk assessment, business continuity">
+        content="penetration testing, security assessment, vulnerability management, ethical hacking, business risk reduction">
     <link rel="canonical" href="https://cuberootdynamics.com">
 
-    <meta property="og:title" content="Cube Root Dynamics - Defending Your Future">
+    <meta property="og:title" content="Cube Root Dynamics - Advanced Security Assessments">
     <meta property="og:description"
-        content="Fortune 500-level cybersecurity tailored for agile businesses. We manage the complexity so you can focus on growth.">
+        content="Understand your true risk posture. We simulate real-world attacks to help you strengthen your defenses.">
     <meta property="og:image" content="https://cuberootdynamics.com/og-image.jpg">
     <meta property="og:url" content="https://cuberootdynamics.com">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <style>
         :root {
-            --primary-red: #dc2626;
-            --dark-gray: #374151;
-            --electric-blue: #3b82f6;
-            --light-gray: #f9fafb;
-            --text-gray: #6b7280;
-            --danger-red: #ef4444;
+            /* Dark Theme Palette */
+            --bg-dark: #0f172a;
+            /* Slate 900 */
+            --bg-card: #1e293b;
+            /* Slate 800 */
+            --bg-card-hover: #334155;
+            /* Slate 700 */
+            --text-main: #f1f5f9;
+            /* Slate 100 */
+            --text-muted: #94a3b8;
+            /* Slate 400 */
+
+            --primary-red: #ef4444;
+            /* Red 500 */
+            --primary-red-hover: #dc2626;
+            /* Red 600 */
+            --accent-glow: rgba(239, 68, 68, 0.15);
+
+            --border-color: #334155;
         }
 
         * {
@@ -40,10 +53,22 @@
         }
 
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: 'Outfit', sans-serif;
             line-height: 1.6;
-            color: var(--dark-gray);
-            background-color: var(--light-gray);
+            color: var(--text-main);
+            background-color: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.01em;
+            /* Less aggressive tracking */
         }
 
         .container {
@@ -52,814 +77,604 @@
             padding: 0 20px;
         }
 
+        /* Navigation */
         nav {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
-            z-index: 100;
-            border-top: 4px solid var(--primary-red);
+            z-index: 1000;
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            padding: 1.25rem 0;
         }
 
         .logo {
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: var(--dark-gray);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .logo span {
+            color: var(--primary-red);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-gray);
+            color: var(--text-muted);
             font-weight: 500;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
-            color: var(--primary-red);
+            color: white;
         }
 
         .cta-button {
-            background: var(--primary-red);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
+            background: transparent;
+            color: var(--primary-red) !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 4px;
             font-weight: 600;
             transition: all 0.3s;
+            border: 1px solid var(--primary-red);
         }
 
         .cta-button:hover {
-            background: #b91c1c;
-            transform: translateY(-2px);
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
             background: var(--primary-red);
-            margin: 3px 0;
-            transition: 0.3s;
+            color: white !important;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
         }
 
+        /* Hero */
         .hero {
-            background: linear-gradient(135deg, #111827 0%, #374151 50%, #7f1d1d 100%);
-            color: white;
-            padding: 4rem 0;
+            padding: 10rem 0 8rem;
             text-align: center;
+            background: radial-gradient(circle at top center, #1e1b4b 0%, var(--bg-dark) 70%);
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='20' cy='20' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
         }
 
         .hero h1 {
-            font-family: 'Roboto', sans-serif;
             font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
             line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--primary-red);
         }
 
         .hero p {
             font-size: 1.25rem;
-            margin-bottom: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.95;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto 2.5rem;
+            font-weight: 400;
         }
 
-        .hero-buttons {
+        .hero-btns {
             display: flex;
             gap: 1rem;
             justify-content: center;
-            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid transparent;
         }
 
         .btn-primary {
-            background: var(--primary-red);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
+            background: transparent;
+            color: var(--primary-red);
+            border: 1px solid var(--primary-red);
         }
 
         .btn-primary:hover {
-            background: #b91c1c;
-            transform: translateY(-2px);
+            background: var(--primary-red);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
         }
 
         .btn-secondary {
             background: transparent;
             color: white;
-            padding: 1rem 2rem;
-            border: 2px solid white;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn-secondary:hover {
-            background: white;
-            color: var(--dark-gray);
+            border-color: white;
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .threat-section {
-            background: #fef2f2;
-            border: 2px solid #fecaca;
-            padding: 3rem 0;
-            position: relative;
+        /* Segment Section */
+        .target-segment {
+            padding: 5rem 0;
+            border-top: 1px solid var(--border-color);
+            background: #111827;
         }
 
-        .threat-section::before {
-            content: '⚠️';
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2rem;
-        }
-
-        .threat-content {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .threat-section h2 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 2.5rem;
-            color: var(--danger-red);
-            margin-bottom: 1rem;
-            margin-top: 1rem;
-        }
-
-        .threat-stats {
+        .segment-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .segment-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .segment-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .check-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
             margin-top: 2rem;
         }
 
-        .stat-box {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-left: 5px solid var(--primary-red);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary-red);
-        }
-
-        .stat-label {
-            font-size: 0.95rem;
-            color: var(--text-gray);
-            margin-top: 0.5rem;
+        .check-list li {
+            display: grid;
+            grid-template-columns: 24px 1fr;
+            gap: 1.2rem;
+            align-items: start;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 1.1rem;
             line-height: 1.4;
         }
 
-        .security-services {
-            padding: 4rem 0;
-            background: white;
+        .check-list li svg {
+            color: var(--primary-red);
+            width: 24px;
+            height: 24px;
+            margin-top: 4px;
+            /* Visual alignment with text cap-height */
         }
 
-        .security-services h2 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 2.5rem;
+        /* Services Grid */
+        .services {
+            padding: 7rem 0;
+        }
+
+        .services.alt-bg {
+            background: #1e293b;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header {
             text-align: center;
-            margin-bottom: 3rem;
-            color: var(--dark-gray);
+            margin-bottom: 5rem;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: var(--light-gray);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-            position: relative;
-            border-left: 5px solid transparent;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-card:nth-child(odd) {
-            border-left-color: var(--primary-red);
-        }
-
-        .service-card:nth-child(even) {
-            border-left-color: var(--electric-blue);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .service-card:nth-child(odd) .service-icon {
-            background: var(--primary-red);
-        }
-
-        .service-card:nth-child(even) .service-icon {
-            background: var(--electric-blue);
-        }
-
-        .service-card h3 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark-gray);
-        }
-
-        .service-card p {
-            color: var(--text-gray);
-            line-height: 1.8;
-        }
-
-        .pricing {
-            padding: 4rem 0;
-            background: var(--light-gray);
-        }
-
-        .pricing h2 {
-            font-family: 'Roboto', sans-serif;
+        .section-header h2 {
             font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--dark-gray);
+            margin-bottom: 1rem;
         }
 
-        .pricing-grid {
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
-        .pricing-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            transition: all 0.3s;
             position: relative;
-            transition: transform 0.3s;
         }
 
-        .pricing-card:hover {
-            transform: scale(1.05);
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-red);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .pricing-card.featured {
-            border: 3px solid var(--primary-red);
-            transform: scale(1.05);
-        }
-
-        .featured-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary-red);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .price {
-            font-size: 3rem;
-            font-weight: 700;
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(239, 68, 68, 0.1);
             color: var(--primary-red);
-            margin-bottom: 0.5rem;
-        }
-
-        .price-period {
-            font-size: 1rem;
-            color: var(--text-gray);
-            margin-bottom: 1rem;
-        }
-
-        .plan-features {
-            list-style: none;
-            margin: 2rem 0;
-        }
-
-        .plan-features li {
-            padding: 0.5rem 0;
+            border-radius: 8px;
             display: flex;
             align-items: center;
-        }
-
-        .plan-features li:before {
-            content: "🛡️";
-            margin-right: 1rem;
-        }
-
-        .plan-button {
-            width: 100%;
-            padding: 1rem;
-            background: var(--dark-gray);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .plan-button:hover {
-            background: #1f2937;
-        }
-
-        .featured .plan-button {
-            background: var(--primary-red);
-        }
-
-        .featured .plan-button:hover {
-            background: #b91c1c;
-        }
-
-        .contact {
-            padding: 4rem 0;
-            background: white;
-        }
-
-        .contact h2 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--dark-gray);
-        }
-
-        .contact-form {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--light-gray);
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid #e5e7eb;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            justify-content: center;
             margin-bottom: 1.5rem;
+        }
+
+        .card-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 8rem 0;
+        }
+
+        .form-box {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .form-group {
             margin-bottom: 1.5rem;
         }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
             outline: none;
             border-color: var(--primary-red);
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 0 2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
-        .form-submit {
-            width: 100%;
-            padding: 1rem;
-            background: var(--primary-red);
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-links h4 {
             color: white;
-            border: none;
-            border-radius: 8px;
+            margin-bottom: 1.5rem;
             font-size: 1.1rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
         }
 
-        .form-submit:hover {
-            background: #b91c1c;
-        }
-
-        footer {
-            background: var(--dark-gray);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section ul {
+        .footer-links ul {
             list-style: none;
         }
 
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
+        .footer-links li {
+            margin-bottom: 0.8rem;
         }
 
-        .footer-section ul li a {
-            color: #9ca3af;
+        .footer-links a {
+            color: var(--text-muted);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: 0.3s;
         }
 
-        .footer-section ul li a:hover {
+        .footer-links a:hover {
             color: white;
         }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #4b5563;
-            color: #9ca3af;
-        }
-
-        @media (max-width: 768px) {
+        @media(max-width: 768px) {
             .nav-links {
                 display: none;
-            }
-
-            .mobile-menu {
-                display: flex;
             }
 
             .hero h1 {
                 font-size: 2.5rem;
             }
 
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn-primary,
-            .btn-secondary {
-                width: 80%;
-                text-align: center;
-            }
-
-            .services-grid,
-            .pricing-grid {
+            .segment-grid {
                 grid-template-columns: 1fr;
+                gap: 3rem;
             }
-
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .threat-stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s, transform 0.6s;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .emergency-banner {
-            background: linear-gradient(90deg, var(--primary-red), #b91c1c);
-            color: white;
-            padding: 0.5rem 0;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .emergency-banner a {
-            color: white;
-            text-decoration: underline;
         }
     </style>
 </head>
 
 <body>
-    <div class="emergency-banner">
-        🚨 Security Incident? Call Emergency Line: (555) 911-SECURE | Available 24/7
-    </div>
 
     <nav>
-        <div class="container">
-            <div class="nav-container">
-                <div class="logo">Cube Root Dynamics</div>
-                <ul class="nav-links">
-                    <li><a href="#security">Security Services</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#contact" class="cta-button">Secure My Business</a></li>
-                </ul>
-                <div class="mobile-menu" onclick="toggleMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+        <div class="container nav-container">
+            <div class="logo">
+                <span>//</span>&nbsp;CUBE ROOT DYNAMICS
             </div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#specialized">Expert Engineering</a></li>
+                <li><a href="#about">Approach</a></li>
+                <li><a href="#contact" class="cta-button">Engage Us</a></li>
+            </ul>
         </div>
     </nav>
 
-    <section class="hero">
+    <header class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1 class="fade-in">Defending Your Future, Today</h1>
-                <p class="fade-in">Fortune 500-level cybersecurity tailored for agile businesses. We manage the
-                    constantly evolving threat landscape so you can focus on driving innovation and growth.</p>
-                <div class="hero-buttons fade-in">
-                    <a href="#contact" class="btn-primary">Schedule Security Consultation</a>
-                    <a href="#solutions" class="btn-secondary">Explore Solutions</a>
-                </div>
+            <h1>Identify Your Weaknesses.<br><span>Before They Are Exploited.</span></h1>
+            <p>We believe the only way to truly secure a network is to test it against real-world threats. We help you
+                find vulnerabilities, fix them, and protect your business from significant financial and reputational
+                loss.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">Start an Assessment</a>
+                <a href="#services" class="btn btn-secondary">Explore Capabilities</a>
             </div>
         </div>
-    </section>
+    </header>
 
-    <section class="threat-section">
+    <section id="about" class="target-segment">
         <div class="container">
-            <div class="threat-content fade-in">
-                <h2>The Reality Small Businesses Face</h2>
-                <p style="font-size: 1.1rem; margin-bottom: 2rem;">Cybercriminals specifically target small businesses
-                    because they know you're vulnerable. Here's why you can't afford to wait:</p>
-
-                <div class="threat-stats">
-                    <div class="stat-box fade-in">
-                        <div class="stat-number">43%</div>
-                        <div class="stat-label">of cyberattacks target small businesses</div>
-                    </div>
-                    <div class="stat-box fade-in">
-                        <div class="stat-number">$4.45M</div>
-                        <div class="stat-label">average cost of a data breach in 2024</div>
-                    </div>
-                    <div class="stat-box fade-in">
-                        <div class="stat-number">60%</div>
-                        <div class="stat-label">of small businesses close within 6 months of a cyberattack</div>
-                    </div>
-                    <div class="stat-box fade-in">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Monitoring required to prevent today's sophisticated attacks</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="security" class="security-services">
-        <div class="container">
-            <h2 class="fade-in">Complete Security Protection</h2>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">👁️</div>
-                    <h3>24/7 Security Monitoring</h3>
-                    <p>Round-the-clock threat detection and response. Our security operations center monitors your
-                        systems continuously, identifying and neutralizing threats before they cause damage.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">📋</div>
-                    <h3>Compliance Management</h3>
-                    <p>HIPAA, SOX, PCI-DSS, and industry-specific compliance support. We ensure you meet all regulatory
-                        requirements with automated monitoring and reporting.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🚨</div>
-                    <h3>Incident Response</h3>
-                    <p>Rapid response to security incidents and breaches. Our expert team contains threats, preserves
-                        evidence, and gets you back online safely.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🎓</div>
-                    <h3>Employee Training</h3>
-                    <p>Security awareness training to prevent human errors. Regular phishing simulations and education
-                        keep your team sharp and security-conscious.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🔍</div>
-                    <h3>Vulnerability Management</h3>
-                    <p>Proactive identification and remediation of security weaknesses. Regular security assessments
-                        keep your defenses strong and up-to-date.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🛡️</div>
-                    <h3>Endpoint Protection</h3>
-                    <p>Advanced protection for all your devices. Next-generation antivirus, device encryption, and
-                        threat hunting keep your endpoints secure.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <h2 class="fade-in">Strategic Security Partnerships</h2>
-            <p style="text-align: center; font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">We don't sell
-                products; we deliver comprehensive risk reduction and business continuity.</p>
-
-            <div class="pricing-grid">
-                <div class="pricing-card fade-in">
-                    <h3 style="font-family: Roboto; font-size: 1.8rem; color: #374151; margin-bottom: 1rem;">Essential
-                        Defense</h3>
-                    <div class="price-period">Foundational protection for emerging teams</div>
-                    <ul class="plan-features">
-                        <li>Security posture assessment</li>
-                        <li>Next-gen endpoint protection</li>
-                        <li>Quarterly security awareness training</li>
-                        <li>Compliance monitoring dashboard</li>
-                        <li>Monthly executive reporting</li>
-                        <li>Incident response coordination</li>
+            <div class="segment-grid">
+                <div class="segment-content">
+                    <h2>Go Beyond the Checklist.</h2>
+                    <p>Compliance does not equal security. Determined attackers don't follow a checklist—they look for
+                        the one gap you missed. That is where we operate.</p>
+                    <p>We partner with organizations to provide a realistic view of their security posture. Our goal is
+                        not just to break in, but to provide the actionable intelligence you need to keep intruders out.
+                    </p>
+                    <ul class="check-list">
+                        <li>
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <div><strong>Adversarial Simulation:</strong> We test your defenses against realistic attack
+                                vectors.</div>
+                        </li>
+                        <li>
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <div><strong>Business Focus:</strong> We prioritize findings based on risk to your specific
+                                operations.</div>
+                        </li>
+                        <li>
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <div><strong>Clear Remediation:</strong> We explain exactly how to fix what we find.</div>
+                        </li>
                     </ul>
-                    <button class="plan-button" onclick="openContactForm('Essential Defense')">Request
-                        Consultation</button>
                 </div>
-
-                <div class="pricing-card featured fade-in">
-                    <div class="featured-badge">Recommended</div>
-                    <h3 style="font-family: Roboto; font-size: 1.8rem; color: #374151; margin-bottom: 1rem;">Advanced
-                        Resilience</h3>
-                    <div class="price-period">Comprehensive security for established organizations</div>
-                    <ul class="plan-features">
-                        <li>Everything in Essential Defense</li>
-                        <li>24/7 Security Operations Center (SOC)</li>
-                        <li>Advanced threat hunting & neutralization</li>
-                        <li>NIST/ISO framework alignment</li>
-                        <li>Continuous vulnerability management</li>
-                        <li>Strategic policy development</li>
-                        <li>Priority incident response SLA</li>
-                    </ul>
-                    <button class="plan-button" onclick="openContactForm('Advanced Resilience')">Request
-                        Consultation</button>
+                <!-- Visual placeholder: Professional Security Dashboard/Network Map -->
+                <div
+                    style="background: #1f2937; height: 350px; border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color); position: relative; overflow: hidden;">
+                    <svg style="width: 100px; height: 100px; color: var(--primary-red); opacity: 0.5;" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                        </path>
+                    </svg>
                 </div>
-
-                <div class="pricing-card fade-in">
-                    <h3 style="font-family: Roboto; font-size: 1.8rem; color: #374151; margin-bottom: 1rem;">Enterprise
-                        Assurance</h3>
-                    <div class="price-period">Maximum compliance & oversight for regulated industries</div>
-                    <ul class="plan-features">
-                        <li>Everything in Advanced Resilience</li>
-                        <li>Custom compliance validation (HIPAA, SOX)</li>
-                        <li>Quarterly penetration testing</li>
-                        <li>Business continuity & disaster recovery</li>
-                        <li>Dedicated Virtual CISO (vCISO)</li>
-                        <li>Board-level risk reporting</li>
-                        <li>15-minute Emergency Response SLA</li>
-                    </ul>
-                    <button class="plan-button" onclick="openContactForm('Enterprise Assurance')">Request
-                        Consultation</button>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 3rem;">
-                <p style="color: #6b7280; margin-bottom: 1rem;">🚨 <strong>Rapid Response:</strong> All partnerships
-                    include 24/7 incident intake</p>
-                <p style="color: #6b7280;">💰 <strong>ROI Focus:</strong> Security is an investment in your company's
-                    longevity and reputation.</p>
             </div>
         </div>
     </section>
 
-
-    <section id="contact" class="contact">
+    <section id="services" class="services">
         <div class="container">
-            <h2 class="fade-in">Secure Your Business Today</h2>
-            <p style="text-align: center; font-size: 1.1rem; color: #6b7280; margin-bottom: 3rem;">Get your free
-                security assessment. Know your risks before the criminals do.</p>
+            <div class="section-header">
+                <h2>Security Assessment Services</h2>
+                <p>Rigorous testing to ensure your critical assets are protected.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Penetration Testing</h3>
+                    <p>We systematically check your networks and applications for weak points. Whether it's a web app or
+                        your internal network, we identify where an attacker could get in.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3>Red Stream Engagements</h3>
+                    <p>A full-scope simulation of a targeted attack. We test your detection and response capabilities by
+                        operating like a sophisticated, real-world adversary.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>External Risk Review</h3>
+                    <p>We map out your digital footprint to spot exposed servers, unpatched systems, and other
+                        low-hanging fruit that attackers target first.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <div class="contact-form fade-in">
+    <!-- Specialized Engineering Section -->
+    <section id="specialized" class="services alt-bg">
+        <div class="container">
+            <div class="section-header">
+                <h2>Specialized Capabilities</h2>
+                <p>Advanced technical services for complex environments.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3>Custom Emulation Tooling</h3>
+                    <p>We develop specific testing tools to validate your defenses against unique or emerging threat
+                        vectors, ensuring your security controls work as intended.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Vulnerability Research</h3>
+                    <p>Our team investigates software and systems to identify zero-day vulnerabilities, helping you
+                        secure your products before they go to market.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Hardware Security</h3>
+                    <p>Assessment of physical devices and IoT systems to identify risks in firmware and hardware
+                        interfaces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Secure Your Organization</h2>
+                <p>Contact us to discuss your security testing needs.</p>
+            </div>
+            <div class="form-box">
                 <form id="contactForm" onsubmit="handleFormSubmit(event)">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Business Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="company" name="company" placeholder="Company Name" required>
-                        </div>
-                        <div class="form-group">
-                            <select id="industry" name="industry" required>
-                                <option value="">Select Industry</option>
-                                <option value="Healthcare">Healthcare</option>
-                                <option value="Finance">Finance</option>
-                                <option value="Legal">Legal</option>
-                                <option value="Manufacturing">Manufacturing</option>
-                                <option value="Professional Services">Professional Services</option>
-                                <option value="Retail">Retail</option>
-                                <option value="Education">Education</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="fullName" class="form-input" placeholder="John Doe" required>
                     </div>
                     <div class="form-group">
-                        <select id="interest" name="interest" required>
-                            <option value="">Security Package Interest</option>
-                            <option value="Secure Foundations">Secure Foundations ($1,500/month)</option>
-                            <option value="Advanced Security">Advanced Security ($2,250/month)</option>
-                            <option value="Enterprise Security">Enterprise Security ($3,000/month)</option>
-                            <option value="Emergency Response">Emergency - Need Help Now</option>
+                        <label>Business Email *</label>
+                        <input type="email" name="email" class="form-input" placeholder="name@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Company *</label>
+                        <input type="text" name="company" class="form-input" placeholder="Company Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Industry</label>
+                        <select name="industry" class="form-select">
+                            <option value="">Select Industry</option>
+                            <option>Healthcare</option>
+                            <option>Finance</option>
+                            <option>Legal</option>
+                            <option>Manufacturing</option>
+                            <option>Professional Services</option>
+                            <option>Retail</option>
+                            <option>Education</option>
+                            <option>Other</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <textarea id="challenges" name="challenges"
-                            placeholder="Describe your current security challenges and compliance requirements"
-                            rows="4"></textarea>
+                        <label>Security Package Interest</label>
+                        <select name="interest" id="interest" class="form-select">
+                            <option value="">Select Package</option>
+                            <option>Secure Foundations ($1,500/month)</option>
+                            <option>Advanced Security ($2,250/month)</option>
+                            <option>Enterprise Security ($3,000/month)</option>
+                            <option>Emergency Response - Need Help Now</option>
+                        </select>
                     </div>
-                    <button type="submit" class="form-submit">Schedule Your Free Security Assessment</button>
+                    <div class="form-group">
+                        <label>Security Challenges *</label>
+                        <textarea name="challenges" class="form-input" rows="4" placeholder="Describe your current security challenges and compliance requirements" required></textarea>
+                    </div>
+                    <div id="form-success" style="display:none; padding:1rem; background:#10b981; color:white; border-radius:8px; margin-bottom:1rem;"></div>
+                    <div id="form-error" style="display:none; padding:1rem; background:#ef4444; color:white; border-radius:8px; margin-bottom:1rem;"></div>
+                    <button type="submit" class="cta-button" style="width: 100%;">Request Security Assessment</button>
                 </form>
             </div>
         </div>
@@ -867,154 +682,28 @@
 
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="logo" style="color: white; margin-bottom: 1rem;">Cube Root Dynamics</div>
-                    <p style="color: #9ca3af;">Security without the complexity for growing businesses. Protecting what
-                        matters most to you.</p>
+            <div class="footer-grid">
+                <div class="footer-links">
+                    <h4>Cube Root Dynamics</h4>
+                    <p style="color: var(--text-muted); line-height: 1.6;">Professional offensive security services.
+                        Identifying risk through rigorous simulation.</p>
                 </div>
-                <div class="footer-section">
-                    <h3>Security Services</h3>
+                <div class="footer-links">
+                    <h4>Services</h4>
                     <ul>
-                        <li><a href="#security">24/7 Monitoring</a></li>
-                        <li><a href="#security">Compliance Management</a></li>
-                        <li><a href="#security">Incident Response</a></li>
-                        <li><a href="#security">Security Training</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#contact">Security Assessment</a></li>
-                        <li><a href="#" onclick="alert('Compliance guide coming soon!')">Compliance Guide</a></li>
-                        <li><a href="#" onclick="alert('Threat intelligence coming soon!')">Threat Intelligence</a></li>
-                        <li><a href="#pricing">Security Packages</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Emergency Contact</h3>
-                    <ul>
-                        <li><a href="mailto:riley@cuberootdynamics.com">riley@cuberootdynamics.com</a></li>
-                        <li><a href="tel:+15559115ecure">Emergency: (555) 911-SECURE</a></li>
-                        <li><a href="tel:+15551235afe">Office: (555) 123-SAFE</a></li>
-                        <li><a href="#contact">Schedule Assessment</a></li>
+                        <li><a href="#">Network Penetration Testing</a></li>
+                        <li><a href="#">Web Application Security</a></li>
+                        <li><a href="#">Red Team Operations</a></li>
+                        <li><a href="#">Security Advisory</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Cube Root Dynamics LLC. All rights reserved. | Security without the complexity.</p>
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05);">
+                &copy; 2024 Cube Root Dynamics. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        }
-
-        function openContactForm(plan) {
-            document.getElementById('interest').value = plan;
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-            document.getElementById('fullName').focus();
-        }
-
-        function handleFormSubmit(event) {
-            event.preventDefault();
-
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-
-            if (!data.fullName || !data.email || !data.company) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            const submitButton = document.querySelector('.form-submit');
-            const originalText = submitButton.textContent;
-
-            submitButton.textContent = 'Scheduling...';
-            submitButton.disabled = true;
-
-            setTimeout(() => {
-                if (data.interest === 'Emergency - Need Help Now') {
-                    alert('EMERGENCY RESPONSE ACTIVATED\n\nOur security team will contact you within 15 minutes.\n\nIf this is an active breach, call our emergency line immediately:\n(555) 911-SECURE');
-                } else {
-                    alert('Thank you! Our security team will contact you within 2 hours to schedule your free assessment.\n\nWe\'ll analyze your current security posture and provide a detailed risk assessment with specific recommendations.');
-                }
-
-                event.target.reset();
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-
-                console.log('Form data:', data);
-            }, 2000);
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            setTimeout(() => {
-                document.querySelectorAll('.hero .fade-in').forEach((el, index) => {
-                    setTimeout(() => el.classList.add('visible'), index * 200);
-                });
-            }, 300);
-
-            document.querySelectorAll('.service-card').forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    const isOdd = Array.from(card.parentNode.children).indexOf(card) % 2 === 0;
-                    card.style.borderLeftWidth = '8px';
-                    card.style.borderLeftColor = isOdd ? '#dc2626' : '#3b82f6';
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.borderLeftWidth = '5px';
-                });
-            });
-
-            const emergencyKeywords = ['help', 'breach', 'hacked', 'emergency', 'incident'];
-            document.getElementById('challenges').addEventListener('input', function () {
-                const text = this.value.toLowerCase();
-                const hasEmergencyKeyword = emergencyKeywords.some(keyword => text.includes(keyword));
-
-                if (hasEmergencyKeyword) {
-                    this.style.borderColor = '#ef4444';
-                    this.style.borderWidth = '3px';
-                } else {
-                    this.style.borderColor = '#e5e7eb';
-                    this.style.borderWidth = '2px';
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>

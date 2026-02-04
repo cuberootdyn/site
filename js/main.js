@@ -48,20 +48,80 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    window.handleFormSubmit = function (e) {
+    // Production-Ready Form Submission
+    window.handleFormSubmit = async function (e) {
         e.preventDefault();
-        const btn = e.target.querySelector('button');
+        const form = e.target;
+        const btn = form.querySelector('button[type="submit"]');
         const originalText = btn.innerText;
+        const successMsg = document.getElementById('form-success');
+        const errorMsg = document.getElementById('form-error');
 
+        // Hide previous messages
+        if (successMsg) successMsg.style.display = 'none';
+        if (errorMsg) errorMsg.style.display = 'none';
+
+        // Show loading state
         btn.innerText = 'Sending...';
         btn.disabled = true;
 
-        // Simulate form submission
-        setTimeout(() => {
-            alert('Thank you for your interest! A security specialist will contact you shortly.');
-            e.target.reset();
+        // Collect form data
+        const formData = {
+            fullName: form.querySelector('input[name="fullName"]')?.value || '',
+            email: form.querySelector('input[name="email"]')?.value || form.querySelector('input[type="email"]')?.value || '',
+            company: form.querySelector('input[name="company"]')?.value || '',
+            industry: form.querySelector('select[name="industry"]')?.value || form.querySelector('.form-select')?.value || '',
+            interest: form.querySelector('select[name="interest"]')?.value || '',
+            challenges: form.querySelector('textarea[name="challenges"]')?.value || form.querySelector('textarea')?.value || ''
+        };
+
+        try {
+            // TODO: Replace with your actual API endpoint when backend is deployed
+            const API_ENDPOINT = 'https://api.cuberootdynamics.com/api/leads';
+            
+            const response = await fetch(API_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                // Success
+                if (successMsg) {
+                    successMsg.style.display = 'block';
+                    successMsg.textContent = 'Thank you! A security specialist will contact you within 24 hours.';
+                } else {
+                    alert('Thank you! A security specialist will contact you within 24 hours.');
+                }
+                form.reset();
+                
+                // Track conversion (Google Analytics)
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-CONVERSION_ID',
+                        'value': formData.interest.includes('Enterprise') ? 3000 : 1500,
+                        'currency': 'USD'
+                    });
+                }
+            } else {
+                throw new Error('Server returned error status');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            
+            // Show error message
+            if (errorMsg) {
+                errorMsg.style.display = 'block';
+                errorMsg.textContent = 'There was an error submitting your request. Please email us directly at security@cuberootdynamics.com';
+            } else {
+                alert('There was an error. Please email us at security@cuberootdynamics.com');
+            }
+        } finally {
+            // Restore button state
             btn.innerText = originalText;
             btn.disabled = false;
-        }, 1500);
+        }
     }
 });
