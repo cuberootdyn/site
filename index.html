@@ -23,444 +23,49 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <style>
-        :root {
-            /* Dark Theme Palette */
-            --bg-dark: #0f172a;
-            /* Slate 900 */
-            --bg-card: #1e293b;
-            /* Slate 800 */
-            --bg-card-hover: #334155;
-            /* Slate 700 */
-            --text-main: #f1f5f9;
-            /* Slate 100 */
-            --text-muted: #94a3b8;
-            /* Slate 400 */
+    <!-- Shared SEO Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cube Root Dynamics">
+    <meta name="twitter:card" content="summary_large_image">
 
-            --primary-red: #ef4444;
-            /* Red 500 */
-            --primary-red-hover: #dc2626;
-            /* Red 600 */
-            --accent-glow: rgba(239, 68, 68, 0.15);
-
-            --border-color: #334155;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            line-height: 1.6;
-            color: var(--text-main);
-            background-color: var(--bg-dark);
-            overflow-x: hidden;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'Space Grotesk', sans-serif;
-            letter-spacing: -0.01em;
-            /* Less aggressive tracking */
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navigation */
-        nav {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.25rem 0;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            letter-spacing: 0.05em;
-        }
-
-        .logo span {
-            color: var(--primary-red);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 500;
-            transition: color 0.3s;
-            font-size: 0.95rem;
-        }
-
-        .nav-links a:hover {
-            color: white;
-        }
-
-        .cta-button {
-            background: transparent;
-            color: var(--primary-red) !important;
-            padding: 0.6rem 1.4rem;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 1px solid var(--primary-red);
-        }
-
-        .cta-button:hover {
-            background: var(--primary-red);
-            color: white !important;
-            box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
-        }
-
-        /* Hero */
-        .hero {
-            padding: 10rem 0 8rem;
-            text-align: center;
-            background: radial-gradient(circle at top center, #1e1b4b 0%, var(--bg-dark) 70%);
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            color: white;
-            font-weight: 700;
-        }
-
-        .hero h1 span {
-            color: var(--primary-red);
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 750px;
-            margin: 0 auto 2.5rem;
-            font-weight: 400;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 0.9rem 2rem;
-            border-radius: 4px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1rem;
-            border: 1px solid transparent;
-        }
-
-        .btn-primary {
-            background: transparent;
-            color: var(--primary-red);
-            border: 1px solid var(--primary-red);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-red);
-            color: white;
-            transform: translateY(-1px);
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-secondary:hover {
-            border-color: white;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        /* Segment Section */
-        .target-segment {
-            padding: 5rem 0;
-            border-top: 1px solid var(--border-color);
-            background: #111827;
-        }
-
-        .segment-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .segment-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .segment-content p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
-
-        .check-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .check-list li {
-            display: grid;
-            grid-template-columns: 24px 1fr;
-            gap: 1.2rem;
-            align-items: start;
-            color: var(--text-main);
-            font-weight: 500;
-            font-size: 1.1rem;
-            line-height: 1.4;
-        }
-
-        .check-list li svg {
-            color: var(--primary-red);
-            width: 24px;
-            height: 24px;
-            margin-top: 4px;
-            /* Visual alignment with text cap-height */
-        }
-
-        /* Services Grid */
-        .services {
-            padding: 7rem 0;
-        }
-
-        .services.alt-bg {
-            background: #1e293b;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            max-width: 650px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 3rem 2rem;
-            border-radius: 8px;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary-red);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--primary-red);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-icon svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            padding: 8rem 0;
-        }
-
-        .form-box {
-            background: var(--bg-card);
-            padding: 3rem;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .form-input,
-        .form-select {
-            width: 100%;
-            padding: 1rem;
-            background: var(--bg-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            color: white;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-
-        .form-input:focus,
-        .form-select:focus {
-            outline: none;
-            border-color: var(--primary-red);
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border-color);
-            padding: 4rem 0 2rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-links h4 {
-            color: white;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        @media(max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .segment-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
+
+    <!-- Threat Ticker -->
+    <div id="threat-ticker" class="threat-ticker">
+        <div class="container">
+            <div class="ticker-flex-container">
+                <div class="ticker-label">LIVE THREAT FEED:</div>
+                <div class="ticker-wrapper">
+                    <div id="ticker-content">Initializing secure connection...</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <nav>
         <div class="container nav-container">
             <div class="logo">
                 <span>//</span>&nbsp;CUBE ROOT DYNAMICS
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#specialized">Expert Engineering</a></li>
                 <li><a href="#about">Approach</a></li>
+                <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#contact" class="cta-button">Engage Us</a></li>
             </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
+
+    <!-- ... Rest of content ... -->
 
     <header class="hero">
         <div class="container">
@@ -475,7 +80,7 @@
         </div>
     </header>
 
-    <section id="about" class="target-segment">
+    <section id="about" class="target-segment reveal">
         <div class="container">
             <div class="segment-grid">
                 <div class="segment-content">
@@ -514,21 +119,92 @@
                         </li>
                     </ul>
                 </div>
-                <!-- Visual placeholder: Professional Security Dashboard/Network Map -->
-                <div
-                    style="background: #1f2937; height: 350px; border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color); position: relative; overflow: hidden;">
-                    <svg style="width: 100px; height: 100px; color: var(--primary-red); opacity: 0.5;" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                        </path>
+                <div class="network-visual">
+                    <svg viewBox="0 0 500 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+                        <defs>
+                            <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#ef4444" stop-opacity="0.6"/>
+                                <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
+                            </radialGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="2" result="blur"/>
+                                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                        </defs>
+                        <!-- Connection lines -->
+                        <g stroke="rgba(239,68,68,0.2)" stroke-width="1">
+                            <line x1="250" y1="80" x2="120" y2="175"><animate attributeName="stroke-opacity" values="0.1;0.35;0.1" dur="3s" repeatCount="indefinite"/></line>
+                            <line x1="250" y1="80" x2="380" y2="175"><animate attributeName="stroke-opacity" values="0.1;0.35;0.1" dur="3.5s" repeatCount="indefinite"/></line>
+                            <line x1="250" y1="80" x2="250" y2="190"><animate attributeName="stroke-opacity" values="0.15;0.4;0.15" dur="2.8s" repeatCount="indefinite"/></line>
+                            <line x1="120" y1="175" x2="70" y2="280"><animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/></line>
+                            <line x1="120" y1="175" x2="180" y2="280"><animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="3.2s" repeatCount="indefinite"/></line>
+                            <line x1="250" y1="190" x2="250" y2="290"><animate attributeName="stroke-opacity" values="0.1;0.35;0.1" dur="3.7s" repeatCount="indefinite"/></line>
+                            <line x1="380" y1="175" x2="320" y2="280"><animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="3.4s" repeatCount="indefinite"/></line>
+                            <line x1="380" y1="175" x2="430" y2="280"><animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4.2s" repeatCount="indefinite"/></line>
+                            <line x1="120" y1="175" x2="250" y2="190" stroke="rgba(239,68,68,0.12)"><animate attributeName="stroke-opacity" values="0.08;0.2;0.08" dur="5s" repeatCount="indefinite"/></line>
+                            <line x1="250" y1="190" x2="380" y2="175" stroke="rgba(239,68,68,0.12)"><animate attributeName="stroke-opacity" values="0.08;0.2;0.08" dur="4.5s" repeatCount="indefinite"/></line>
+                        </g>
+                        <!-- Data pulse particles -->
+                        <g fill="#ef4444">
+                            <circle r="2" opacity="0.7"><animateMotion dur="2.5s" repeatCount="indefinite" path="M250,80 L120,175"/><animate attributeName="opacity" values="0;0.8;0" dur="2.5s" repeatCount="indefinite"/></circle>
+                            <circle r="2" opacity="0.7"><animateMotion dur="3s" repeatCount="indefinite" path="M250,80 L380,175"/><animate attributeName="opacity" values="0;0.8;0" dur="3s" repeatCount="indefinite"/></circle>
+                            <circle r="1.5" opacity="0.5"><animateMotion dur="2s" repeatCount="indefinite" path="M120,175 L70,280"/><animate attributeName="opacity" values="0;0.6;0" dur="2s" repeatCount="indefinite"/></circle>
+                            <circle r="1.5" opacity="0.5"><animateMotion dur="2.2s" repeatCount="indefinite" path="M380,175 L430,280"/><animate attributeName="opacity" values="0;0.6;0" dur="2.2s" repeatCount="indefinite"/></circle>
+                        </g>
+                        <!-- Firewall / gateway node (top center) -->
+                        <g filter="url(#glow)">
+                            <circle cx="250" cy="80" r="18" fill="url(#nodeGlow)"/>
+                            <circle cx="250" cy="80" r="8" fill="#1f2937" stroke="#ef4444" stroke-width="2"><animate attributeName="r" values="7;9;7" dur="3s" repeatCount="indefinite"/></circle>
+                            <text x="250" y="60" text-anchor="middle" fill="rgba(239,68,68,0.6)" font-size="9" font-family="monospace">FIREWALL</text>
+                        </g>
+                        <!-- Internal server nodes (middle row) -->
+                        <g filter="url(#glow)">
+                            <circle cx="120" cy="175" r="14" fill="url(#nodeGlow)"/>
+                            <circle cx="120" cy="175" r="6" fill="#1f2937" stroke="#ef4444" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite"/></circle>
+                            <text x="120" y="158" text-anchor="middle" fill="rgba(239,68,68,0.5)" font-size="8" font-family="monospace">WEB SRV</text>
+                        </g>
+                        <g filter="url(#glow)">
+                            <circle cx="250" cy="190" r="14" fill="url(#nodeGlow)"/>
+                            <circle cx="250" cy="190" r="6" fill="#1f2937" stroke="#ef4444" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/></circle>
+                            <text x="250" y="173" text-anchor="middle" fill="rgba(239,68,68,0.5)" font-size="8" font-family="monospace">APP SRV</text>
+                        </g>
+                        <g filter="url(#glow)">
+                            <circle cx="380" cy="175" r="14" fill="url(#nodeGlow)"/>
+                            <circle cx="380" cy="175" r="6" fill="#1f2937" stroke="#ef4444" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="3.5s" repeatCount="indefinite"/></circle>
+                            <text x="380" y="158" text-anchor="middle" fill="rgba(239,68,68,0.5)" font-size="8" font-family="monospace">AD / DC</text>
+                        </g>
+                        <!-- Endpoint nodes (bottom row) -->
+                        <g>
+                            <circle cx="70" cy="280" r="4" fill="#1f2937" stroke="rgba(239,68,68,0.4)" stroke-width="1"><animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="4s" repeatCount="indefinite"/></circle>
+                            <text x="70" y="298" text-anchor="middle" fill="rgba(239,68,68,0.35)" font-size="7" font-family="monospace">EP-01</text>
+                        </g>
+                        <g>
+                            <circle cx="180" cy="280" r="4" fill="#1f2937" stroke="rgba(239,68,68,0.4)" stroke-width="1"><animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="3.8s" repeatCount="indefinite"/></circle>
+                            <text x="180" y="298" text-anchor="middle" fill="rgba(239,68,68,0.35)" font-size="7" font-family="monospace">EP-02</text>
+                        </g>
+                        <g>
+                            <circle cx="250" cy="290" r="4" fill="#1f2937" stroke="rgba(239,68,68,0.4)" stroke-width="1"><animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="4.2s" repeatCount="indefinite"/></circle>
+                            <text x="250" y="308" text-anchor="middle" fill="rgba(239,68,68,0.35)" font-size="7" font-family="monospace">DB</text>
+                        </g>
+                        <g>
+                            <circle cx="320" cy="280" r="4" fill="#1f2937" stroke="rgba(239,68,68,0.4)" stroke-width="1"><animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="3.6s" repeatCount="indefinite"/></circle>
+                            <text x="320" y="298" text-anchor="middle" fill="rgba(239,68,68,0.35)" font-size="7" font-family="monospace">EP-03</text>
+                        </g>
+                        <g>
+                            <circle cx="430" cy="280" r="4" fill="#1f2937" stroke="rgba(239,68,68,0.4)" stroke-width="1"><animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="4.4s" repeatCount="indefinite"/></circle>
+                            <text x="430" y="298" text-anchor="middle" fill="rgba(239,68,68,0.35)" font-size="7" font-family="monospace">EP-04</text>
+                        </g>
+                        <!-- Subtle scan line -->
+                        <rect x="0" y="0" width="500" height="3" fill="rgba(239,68,68,0.08)">
+                            <animate attributeName="y" values="-3;350" dur="8s" repeatCount="indefinite"/>
+                        </rect>
                     </svg>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="services">
+    <section id="services" class="services reveal">
         <div class="container">
             <div class="section-header">
                 <h2>Security Assessment Services</h2>
@@ -556,7 +232,7 @@
                                 d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3>Red Stream Engagements</h3>
+                    <h3>Red Team Operations</h3>
                     <p>A full-scope simulation of a targeted attack. We test your detection and response capabilities by
                         operating like a sophisticated, real-world adversary.</p>
                 </div>
@@ -577,7 +253,7 @@
     </section>
 
     <!-- Specialized Engineering Section -->
-    <section id="specialized" class="services alt-bg">
+    <section id="specialized" class="services alt-bg reveal">
         <div class="container">
             <div class="section-header">
                 <h2>Specialized Capabilities</h2>
@@ -623,15 +299,246 @@
         </div>
     </section>
 
+    <section id="risk-calculator" class="risk-section reveal">
+        <div class="risk-bg-glow"></div>
+        <div class="container">
+            <div class="risk-header-center">
+                <h2>Security Posture Risk Assessment</h2>
+                <p>A multi-factor analysis grounded in IBM's 2024 Cost of a Data Breach Report and real-world incident data.</p>
+            </div>
+
+            <div class="risk-card glass-panel">
+                <div class="ra-progress">
+                    <div class="ra-step active" data-step="1"><span class="ra-step-num">1</span> Organization</div>
+                    <div class="ra-step" data-step="2"><span class="ra-step-num">2</span> Security Posture</div>
+                    <div class="ra-step" data-step="3"><span class="ra-step-num">3</span> Compliance</div>
+                </div>
+
+                <form id="risk-form">
+                    <div class="ra-panel active" id="ra-step-1">
+                        <h3 class="ra-panel-title">Organization Profile</h3>
+                        <div class="input-group">
+                            <label for="calc-industry">Industry</label>
+                            <div class="select-wrapper">
+                                <select id="calc-industry" class="premium-select">
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="finance">Finance / Banking</option>
+                                    <option value="tech">Technology / SaaS</option>
+                                    <option value="retail">Retail / E-Commerce</option>
+                                    <option value="energy">Energy / Infrastructure</option>
+                                    <option value="other">General Business</option>
+                                </select>
+                                <svg class="select-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="calc-employees">Employee Count</label>
+                            <div class="select-wrapper">
+                                <select id="calc-employees" class="premium-select">
+                                    <option value="small">1 &ndash; 50</option>
+                                    <option value="mid-small">51 &ndash; 200</option>
+                                    <option value="mid">201 &ndash; 1,000</option>
+                                    <option value="mid-large">1,001 &ndash; 5,000</option>
+                                    <option value="enterprise">5,000+</option>
+                                </select>
+                                <svg class="select-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="record-count">Sensitive Records at Risk</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="record-count" class="premium-input" placeholder="e.g. 50000" min="0">
+                                <span class="input-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path></svg></span>
+                            </div>
+                            <div class="slider-container">
+                                <input type="range" id="record-slider" min="1000" max="1000000" step="1000" value="50000" class="premium-range">
+                            </div>
+                        </div>
+                        <div class="ra-nav">
+                            <span></span>
+                            <button type="button" class="btn-ra-next" data-target="2">Next: Security Posture</button>
+                        </div>
+                    </div>
+
+                    <div class="ra-panel" id="ra-step-2">
+                        <h3 class="ra-panel-title">Security Posture Assessment</h3>
+                        <p class="ra-panel-sub">Toggle each control that your organization currently has in place.</p>
+                        <div class="posture-grid">
+                            <label class="toggle-row"><span class="toggle-label">Dedicated security team or CISO</span><input type="checkbox" id="p-ciso"><span class="toggle-switch"></span></label>
+                            <label class="toggle-row"><span class="toggle-label">Tested incident response plan</span><input type="checkbox" id="p-ir"><span class="toggle-switch"></span></label>
+                            <label class="toggle-row"><span class="toggle-label">Security automation / SIEM</span><input type="checkbox" id="p-siem"><span class="toggle-switch"></span></label>
+                            <label class="toggle-row"><span class="toggle-label">Regular penetration testing</span><input type="checkbox" id="p-pentest"><span class="toggle-switch"></span></label>
+                            <label class="toggle-row"><span class="toggle-label">Employee security awareness training</span><input type="checkbox" id="p-training"><span class="toggle-switch"></span></label>
+                            <label class="toggle-row"><span class="toggle-label">Data encrypted at rest and in transit</span><input type="checkbox" id="p-encrypt"><span class="toggle-switch"></span></label>
+                            <label class="toggle-row"><span class="toggle-label">MFA enforced on critical systems</span><input type="checkbox" id="p-mfa"><span class="toggle-switch"></span></label>
+                            <label class="toggle-row"><span class="toggle-label">Network segmentation in place</span><input type="checkbox" id="p-segment"><span class="toggle-switch"></span></label>
+                        </div>
+                        <div class="ra-nav">
+                            <button type="button" class="btn-ra-back" data-target="1">Back</button>
+                            <button type="button" class="btn-ra-next" data-target="3">Next: Compliance</button>
+                        </div>
+                    </div>
+
+                    <div class="ra-panel" id="ra-step-3">
+                        <h3 class="ra-panel-title">Regulatory Exposure</h3>
+                        <p class="ra-panel-sub">Select all frameworks your organization is subject to.</p>
+                        <div class="compliance-grid">
+                            <label class="check-card"><input type="checkbox" id="c-hipaa"><span class="check-mark"></span><span class="check-text">HIPAA</span></label>
+                            <label class="check-card"><input type="checkbox" id="c-pci"><span class="check-mark"></span><span class="check-text">PCI-DSS</span></label>
+                            <label class="check-card"><input type="checkbox" id="c-gdpr"><span class="check-mark"></span><span class="check-text">GDPR</span></label>
+                            <label class="check-card"><input type="checkbox" id="c-sox"><span class="check-mark"></span><span class="check-text">SOX</span></label>
+                            <label class="check-card"><input type="checkbox" id="c-cmmc"><span class="check-mark"></span><span class="check-text">CMMC</span></label>
+                            <label class="check-card"><input type="checkbox" id="c-none"><span class="check-mark"></span><span class="check-text">None / Unsure</span></label>
+                        </div>
+                        <div class="ra-nav">
+                            <button type="button" class="btn-ra-back" data-target="2">Back</button>
+                            <button type="submit" class="btn-calculate"><span class="btn-text">RUN ASSESSMENT</span></button>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="risk-dashboard" class="ra-dashboard">
+                    <div class="dash-top-row">
+                        <div class="dash-stat-card">
+                            <span class="dash-stat-label">UNMITIGATED EXPOSURE</span>
+                            <div class="cost-wrapper"><span class="currency">$</span><span id="cost-unmitigated" class="cost-value">0</span></div>
+                            <span class="dash-stat-note">If breached with zero security controls</span>
+                        </div>
+                        <div class="dash-stat-card adjusted">
+                            <span class="dash-stat-label">YOUR ADJUSTED RISK</span>
+                            <div class="cost-wrapper"><span class="currency">$</span><span id="cost-adjusted" class="cost-value">0</span></div>
+                            <span class="dash-stat-note" id="posture-grade"></span>
+                        </div>
+                    </div>
+
+                    <div class="dash-section">
+                        <h4 class="dash-section-title">Breach Scenario Timeline</h4>
+                        <p class="dash-section-sub">Based on your security posture, here is how an attack would likely unfold.</p>
+                        <div id="breach-timeline" class="breach-timeline"></div>
+                    </div>
+
+                    <div class="dash-section">
+                        <h4 class="dash-section-title">Real-World Precedent</h4>
+                        <div id="breach-references" class="breach-refs"></div>
+                    </div>
+
+                    <div class="dash-section">
+                        <h4 class="dash-section-title">Total Cost of Inaction</h4>
+                        <div class="tco-compare">
+                            <div class="tco-col tco-invest">
+                                <span class="tco-label">Proactive Security Investment</span>
+                                <span class="tco-val" id="tco-invest">$0</span>
+                                <span class="tco-note">Estimated annual spend for your org size</span>
+                            </div>
+                            <div class="tco-vs">vs</div>
+                            <div class="tco-col tco-breach">
+                                <span class="tco-label">Estimated Breach Cost</span>
+                                <span class="tco-val" id="tco-breach">$0</span>
+                                <span class="tco-note">Your adjusted risk exposure</span>
+                            </div>
+                        </div>
+                        <div class="tco-ratio" id="tco-ratio"></div>
+                    </div>
+
+                    <div class="dash-section">
+                        <h4 class="dash-section-title">Highest-Impact Recommendations</h4>
+                        <div id="recommendations" class="rec-grid"></div>
+                    </div>
+
+                    <div class="dash-footer">
+                        <p class="dash-quote">"Nobody knew cybersecurity could be so complicated."</p>
+                        <p class="dash-cite">Source data: IBM Cost of a Data Breach Report 2024. Breach references from public incident disclosures.</p>
+                        <div class="dash-cta-row">
+                            <button type="button" class="btn btn-secondary" onclick="window.print()">Download Risk Brief</button>
+                            <a href="#contact" class="btn btn-primary">Schedule a Scoping Call</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Work With Us -->
+    <section id="why-us" class="why-us-section reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Work With Us</h2>
+            </div>
+            <div class="grid-3">
+                <div class="value-card">
+                    <h3>Operator Experience</h3>
+                    <p>Our assessments are conducted by practitioners who have spent years in offensive security — not junior analysts running automated scanners.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Business-First Reporting</h3>
+                    <p>We translate technical findings into business risk. Your executive team gets actionable intelligence, not a vulnerability dump.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Remediation Support</h3>
+                    <p>We don't just find problems and leave. We work with your engineering team to verify fixes and close gaps.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing-section reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>Engagement Models</h2>
+                <p>Flexible options based on your organization's security maturity and goals.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="plan-column">
+                    <div class="plan-name">Security Assessment</div>
+                    <div class="plan-desc">One-time engagement to identify and prioritize risk.</div>
+                    <ul class="plan-features">
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> External / Internal Pentest</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Web Application Testing</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Vulnerability Report with Remediation Guidance</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Executive Summary</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary" style="width:100%;justify-content:center;">Request Scope of Work</a>
+                </div>
+                <div class="plan-column featured">
+                    <div class="plan-badge">Recommended</div>
+                    <div class="plan-name">Continuous Security</div>
+                    <div class="plan-desc">Ongoing security partnership for sustained coverage.</div>
+                    <ul class="plan-features">
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Quarterly Penetration Testing</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Continuous Vulnerability Scanning</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Monthly Security Reporting</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Remediation Verification</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Priority Scheduling</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Schedule Consultation</a>
+                </div>
+                <div class="plan-column">
+                    <div class="plan-name">Enterprise Security</div>
+                    <div class="plan-desc">Full security program for organizations with complex needs.</div>
+                    <ul class="plan-features">
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Red Team Operations</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> vCISO Advisory</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Managed Detection &amp; Response</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Incident Response Retainer</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Custom Security Training</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Dedicated Account Manager</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary" style="width:100%;justify-content:center;">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Form -->
-    <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section reveal">
         <div class="container">
             <div class="section-header">
                 <h2>Secure Your Organization</h2>
                 <p>Contact us to discuss your security testing needs.</p>
             </div>
             <div class="form-box">
-                <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                <form id="contactForm" action="https://formspree.io/f/maqdyeyr" method="POST">
                     <div class="form-group">
                         <label>Full Name *</label>
                         <input type="text" name="fullName" class="form-input" placeholder="John Doe" required>
@@ -662,18 +569,24 @@
                         <label>Security Package Interest</label>
                         <select name="interest" id="interest" class="form-select">
                             <option value="">Select Package</option>
-                            <option>Secure Foundations ($1,500/month)</option>
-                            <option>Advanced Security ($2,250/month)</option>
-                            <option>Enterprise Security ($3,000/month)</option>
+                            <option>Security Assessment</option>
+                            <option>Continuous Security</option>
+                            <option>Enterprise Security</option>
                             <option>Emergency Response - Need Help Now</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Security Challenges *</label>
-                        <textarea name="challenges" class="form-input" rows="4" placeholder="Describe your current security challenges and compliance requirements" required></textarea>
+                        <textarea name="challenges" class="form-input" rows="4"
+                            placeholder="Describe your current security challenges and compliance requirements"
+                            required></textarea>
                     </div>
-                    <div id="form-success" style="display:none; padding:1rem; background:#10b981; color:white; border-radius:8px; margin-bottom:1rem;"></div>
-                    <div id="form-error" style="display:none; padding:1rem; background:#ef4444; color:white; border-radius:8px; margin-bottom:1rem;"></div>
+                    <div id="form-success"
+                        style="display:none; padding:1rem; background:#10b981; color:white; border-radius:8px; margin-bottom:1rem;">
+                    </div>
+                    <div id="form-error"
+                        style="display:none; padding:1rem; background:#ef4444; color:white; border-radius:8px; margin-bottom:1rem;">
+                    </div>
                     <button type="submit" class="cta-button" style="width: 100%;">Request Security Assessment</button>
                 </form>
             </div>
@@ -699,10 +612,12 @@
                 </div>
             </div>
             <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05);">
-                &copy; 2024 Cube Root Dynamics. All rights reserved.
+                &copy; 2026 Cube Root Dynamics. All rights reserved.
             </div>
         </div>
     </footer>
+
+    <script src="js/main.js"></script>
 
 </body>
 
