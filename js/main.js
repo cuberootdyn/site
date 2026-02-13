@@ -2,43 +2,248 @@ document.addEventListener('DOMContentLoaded', function () {
     initRiskAssessment();
     initThreatTicker();
     initHamburger();
-    initReveal();
-    initHeroCanvas();
-    initTerminalTyper();
     initCounters();
-    initContactForm();
+    initTerminal();
+    initParticles();
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+                // Close mobile menu if open
+                const nav = document.getElementById('nav-links');
+                if (nav && nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                }
+            }
+        });
+    });
 });
 
+/* --- 1. Navigation --- */
 function initHamburger() {
     var btn = document.getElementById('hamburger');
     var nav = document.getElementById('nav-links');
     if (!btn || !nav) return;
     btn.addEventListener('click', function () {
-        btn.classList.toggle('active');
-        nav.classList.toggle('open');
-    });
-    nav.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-            btn.classList.remove('active');
-            nav.classList.remove('open');
-        });
+        nav.classList.toggle('active');
     });
 }
 
-function initReveal() {
-    var sections = document.querySelectorAll('.reveal');
-    if (!sections.length) return;
-    var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+/* --- 2. Counters (Stats) --- */
+function initCounters() {
+    var stats = document.querySelectorAll('.stat-number');
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if(entry.isIntersecting) {
+                var target = parseInt(entry.target.getAttribute('data-target'));
+                animateValue(entry.target, 0, target, 2500);
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
-    sections.forEach(function (s) { observer.observe(s); });
+    }, { threshold: 0.5 });
+    stats.forEach(function(s) { observer.observe(s); });
 }
 
+function animateValue(el, start, end, duration) {
+    var startTs = null;
+    function step(ts) {
+        if (!startTs) startTs = ts;
+        var progress = Math.min((ts - startTs) / duration, 1);
+        var ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        el.textContent = new Intl.NumberFormat('en-US').format(Math.floor(ease * (end - start) + start));
+        if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+}
+
+/* --- 3. Terminal Animation --- */
+function initTerminal() {
+    var termBody = document.getElementById('terminal-body');
+    if (!termBody) return;
+
+    var lines = [
+        "> nmap -sV -p- target.corp.internal",
+        "Starting Nmap 7.94 ( https://nmap.org )",
+        "Nmap scan report for target.corp.internal (10.10.45.12)",
+        "Host is up (0.0023s latency).",
+        "PORT     STATE SERVICE    VERSION",
+        "22/tcp   open  ssh        OpenSSH 8.2p1",
+        "80/tcp   open  http       nginx 1.18.0",
+        "443/tcp  open  ssl/http   nginx 1.18.0",
+        "8080/tcp open  http-proxy HAProxy 2.0.13",
+        "",
+        "> hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.45.12 ssh",
+        "[DATA] Attacking ssh://10.10.45.12:22/",
+        "[22][ssh] host: 10.10.45.12   login: admin   password: password123",
+        "[STATUS] 1 valid password found",
+        "",
+        "> ssh admin@10.10.45.12",
+        "Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-150-generic x86_64)",
+        "$ whoami",
+        "root",
+        "$ cat /etc/shadow",
+        "root:$6$hK3...:19123:0:99999:7:::",
+        "[!] Critical Asset Compromised.",
+        "Generating Report..."
+    ];
+
+    var lineIndex = 0;
+    var charIndex = 0;
+    var currentLine = "";
+    var isTyping = true;
+
+    function typeWriter() {
+        if (lineIndex >= lines.length) {
+            setTimeout(function() {
+                termBody.innerHTML = "";
+                lineIndex = 0;
+                typeWriter();
+            }, 5000);
+            return;
+        }
+
+        var fullLine = lines[lineIndex];
+        
+        // Fast print for output, slow type for commands
+        var isCommand = fullLine.startsWith(">") || fullLine.startsWith("$");
+        var speed = isCommand ? (50 + Math.random() * 50) : 5; 
+
+        if (charIndex < fullLine.length) {
+            currentLine += fullLine.charAt(charIndex);
+            // Re-render all lines so far plus current progress
+            var previousContent = lines.slice(0, lineIndex).join("\n");
+            termBody.textContent = previousContent + (previousContent ? "\n" : "") + currentLine + "█";
+            charIndex++;
+            setTimeout(typeWriter, speed);
+        } else {
+            // Line finished
+            charIndex = 0;
+            currentLine = "";
+            lineIndex++;
+            termBody.textContent = lines.slice(0, lineIndex).join("\n");
+            setTimeout(typeWriter, isCommand ? 600 : 100);
+        }
+        termBody.scrollTop = termBody.scrollHeight;
+    }
+
+    typeWriter();
+}
+
+/* --- 4. Particle Network --- */
+function initParticles() {
+    var canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    
+    var particles = [];
+    var particleCount = 60;
+    var connectionDistance = 150;
+    
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    
+    for (var i = 0; i < particleCount; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            size: Math.random() * 2 + 1
+        });
+    }
+    
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Update and draw particles
+        for (var i = 0; i < particles.length; i++) {
+            var p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            
+            ctx.fillStyle = 'rgba(239, 68, 68, 0.5)';
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Connect
+            for (var j = i + 1; j < particles.length; j++) {
+                var p2 = particles[j];
+                var dx = p.x - p2.x;
+                var dy = p.y - p2.y;
+                var dist = Math.sqrt(dx*dx + dy*dy);
+                
+                if (dist < connectionDistance) {
+                    ctx.strokeStyle = 'rgba(239, 68, 68, ' + (1 - dist/connectionDistance) * 0.2 + ')';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.stroke();
+                }
+            }
+        }
+        
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+}
+
+/* --- 5. Threat Ticker --- */
+function initThreatTicker() {
+    var tickerContent = document.getElementById('ticker-content');
+    if (!tickerContent) return;
+    
+    var CISA_KEV_URL = 'https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json';
+    var fallbackThreats = [
+        { id: 'CVE-2024-3094', severity: 'CRITICAL', desc: 'XZ Utils Supply Chain Attack - Remote Code Execution' },
+        { id: 'CVE-2024-21413', severity: 'CRITICAL', desc: 'Microsoft Outlook Moniker Link RCE Vulnerability' },
+        { id: 'CVE-2023-4863', severity: 'HIGH', desc: 'Libwebp Heap Buffer Overflow Affecting Major Browsers' },
+        { id: 'ACTOR-VOLT-TYPHOON', severity: 'CRITICAL', desc: 'Nation-state actor targeting US critical infrastructure' },
+        { id: 'CVE-2024-001', severity: 'MEDIUM', desc: 'Cloud Provider API Rate Limiting Bypass' },
+        { id: 'CVE-2024-23897', severity: 'CRITICAL', desc: 'Jenkins Arbitrary File Read leading to RCE' },
+        { id: 'CVE-2024-3400', severity: 'CRITICAL', desc: 'Palo Alto Networks PAN-OS Command Injection' },
+        { id: 'APT29', severity: 'HIGH', desc: 'Midnight Blizzard campaigns targeting cloud tenants' },
+        { id: 'CVE-2023-23397', severity: 'CRITICAL', desc: 'Microsoft Outlook NTLM Relay Elevation of Privilege' },
+        { id: 'CVE-2023-38831', severity: 'HIGH', desc: 'WinRAR Remote Code Execution via Self-Extracting Archives' }
+    ];
+
+    function updateTickerUI(items) {
+        var baseHtml = items.map(function (item) {
+            var cls = item.severity === 'CRITICAL' ? 'severity-critical' : item.severity === 'HIGH' ? 'severity-high' : 'severity-medium';
+            return '<span class="ticker-item"><span class="' + cls + '">[' + item.severity + '] ' + item.id + '</span>: ' + item.desc + '</span>';
+        }).join('');
+        tickerContent.innerHTML = baseHtml + baseHtml + baseHtml; // Triplicate for loop
+    }
+
+    fetch(CISA_KEV_URL)
+        .then(res => res.json())
+        .then(data => {
+            if (data && data.vulnerabilities) {
+                var items = data.vulnerabilities.slice(0, 10).map(v => ({
+                    id: v.cveID,
+                    severity: 'CRITICAL',
+                    desc: v.vulnerabilityName
+                }));
+                updateTickerUI(items);
+            } else throw new Error();
+        })
+        .catch(() => updateTickerUI(fallbackThreats));
+}
+
+/* --- 6. Risk Calculator Logic (PRESERVED) --- */
 var INDUSTRY_DATA = {
     healthcare: { cpr: 408, label: 'Healthcare', regBase: 1.15 },
     finance:    { cpr: 266, label: 'Finance / Banking', regBase: 1.10 },
@@ -139,7 +344,7 @@ function initRiskAssessment() {
     });
 
     var noneCheck = document.getElementById('c-none');
-    var regChecks = document.querySelectorAll('.compliance-grid input:not(#c-none)');
+    var regChecks = document.querySelectorAll('.compliance-options input:not(#c-none)'); // Updated selector
     if (noneCheck) {
         noneCheck.addEventListener('change', function () {
             if (this.checked) regChecks.forEach(function (cb) { cb.checked = false; });
@@ -153,13 +358,15 @@ function initRiskAssessment() {
         e.preventDefault();
         var btn = form.querySelector('.btn-calculate');
         var btnText = btn.querySelector('.btn-text');
-        btnText.textContent = 'ANALYZING THREAT POSTURE...';
+        var originalText = btnText.textContent;
+        btnText.textContent = 'ANALYZING...';
         btn.disabled = true;
         setTimeout(function () {
             runAssessment();
-            btnText.textContent = 'RUN ASSESSMENT';
+            btnText.textContent = originalText;
             btn.disabled = false;
             dashboard.classList.add('active');
+            // Hide form to focus on results? Or just scroll
             dashboard.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 900);
     });
@@ -221,17 +428,17 @@ function runAssessment() {
     var gradeEl = document.getElementById('posture-grade');
     var ratio = adjusted / unmitigated;
     if (ratio > 0.75) {
-        gradeEl.textContent = 'CRITICAL \u2014 ' + postureOn + '/' + postureTotal + ' controls active. Estimated ' + totalDays + '-day breach lifecycle.';
-        gradeEl.className = 'dash-stat-note grade-critical';
+        gradeEl.textContent = 'CRITICAL RISK';
+        gradeEl.className = 'grade-badge grade-critical';
     } else if (ratio > 0.50) {
-        gradeEl.textContent = 'HIGH RISK \u2014 ' + postureOn + '/' + postureTotal + ' controls active. Estimated ' + totalDays + '-day breach lifecycle.';
-        gradeEl.className = 'dash-stat-note grade-high';
+        gradeEl.textContent = 'HIGH RISK';
+        gradeEl.className = 'grade-badge grade-high';
     } else if (ratio > 0.30) {
-        gradeEl.textContent = 'MODERATE \u2014 ' + postureOn + '/' + postureTotal + ' controls active. Estimated ' + totalDays + '-day breach lifecycle.';
-        gradeEl.className = 'dash-stat-note grade-moderate';
+        gradeEl.textContent = 'MODERATE RISK';
+        gradeEl.className = 'grade-badge grade-moderate';
     } else {
-        gradeEl.textContent = 'MANAGED \u2014 ' + postureOn + '/' + postureTotal + ' controls active. Estimated ' + totalDays + '-day breach lifecycle.';
-        gradeEl.className = 'dash-stat-note grade-managed';
+        gradeEl.textContent = 'MANAGED RISK';
+        gradeEl.className = 'grade-badge grade-managed';
     }
 
     buildTimeline(postureState, totalDays);
@@ -255,8 +462,8 @@ function buildTimeline(postureState, totalDays) {
         node.innerHTML = '<div class="tl-marker"></div><div class="tl-content">' +
             '<span class="tl-day">DAY ' + scaledDay + '</span>' +
             '<span class="tl-phase">' + evt.phase + '</span>' +
-            '<p class="tl-text">' + evt.text + '</p>' +
-            (gapLabel ? '<span class="tl-gap">Missing: ' + gapLabel + '</span>' : '') +
+            '<p style="margin:0; font-size:0.9rem; color:#ccc;">' + evt.text + '</p>' +
+            (gapLabel ? '<span style="display:block; margin-top:0.5rem; font-size:0.8rem; color:#ef4444;">Missing: ' + gapLabel + '</span>' : '') +
             '</div>';
         container.appendChild(node);
     });
@@ -273,14 +480,20 @@ function buildBreachRefs(industry, postureState) {
         breach.gaps.forEach(function (g) {
             if (!postureState[g]) { matchCount++; matchedGaps.push(POSTURE_FACTORS[g].label); }
         });
+        
+        // Only show relevant breaches
         var card = document.createElement('div');
-        card.className = 'breach-card';
+        card.className = 'dash-card primary';
+        card.style.textAlign = 'left';
+        card.style.marginBottom = '1rem';
+        
         var matchHtml = matchCount > 0
-            ? '<div class="breach-match match-danger"><span class="match-count">' + matchCount + '/' + breach.gaps.length + ' shared risk factors</span><span class="match-list">' + matchedGaps.join(' &middot; ') + '</span></div>'
-            : '<div class="breach-match match-ok"><span class="match-count">0 shared risk factors</span><span class="match-list">Your controls address this attack vector</span></div>';
-        card.innerHTML = '<div class="breach-header"><strong>' + breach.company + '</strong> <span class="breach-year">(' + breach.year + ')</span></div>' +
-            '<p class="breach-summary">' + breach.summary + '</p>' +
-            '<p class="breach-impact">' + breach.impact + '</p>' + matchHtml;
+            ? '<div style="margin-top:0.5rem; color:#ef4444; font-size:0.8rem;">⚠ You share ' + matchCount + ' risk factors with this breach.</div>'
+            : '<div style="margin-top:0.5rem; color:#22c55e; font-size:0.8rem;">✓ Your controls would likely mitigate this attack.</div>';
+            
+        card.innerHTML = '<div style="font-weight:700; color:#fff;">' + breach.company + ' <span style="opacity:0.6; font-weight:400;">(' + breach.year + ')</span></div>' +
+            '<p style="font-size:0.9rem; margin:0.5rem 0;">' + breach.summary + '</p>' +
+            '<div style="font-size:0.8rem; opacity:0.8;">Impact: ' + breach.impact + '</div>' + matchHtml;
         container.appendChild(card);
     });
 }
@@ -306,292 +519,13 @@ function buildRecommendations(postureState, records) {
     recs.sort(function (a, b) { return b.savings - a.savings; });
 
     if (recs.length === 0) {
-        container.innerHTML = '<div class="rec-card rec-good"><strong>Strong posture.</strong> All assessed controls are active. Consider advanced red team operations to validate detection and response under realistic conditions.</div>';
+        container.innerHTML = '<div class="rec-card"><div class="rec-body"><strong>Strong posture.</strong> All assessed controls are active. Consider advanced red team operations to validate detection and response under realistic conditions.</div></div>';
         return;
     }
     recs.slice(0, 3).forEach(function (rec, i) {
         var card = document.createElement('div');
         card.className = 'rec-card';
-        card.innerHTML = '<span class="rec-rank">' + (i + 1) + '</span><div class="rec-body"><strong>' + rec.label + '</strong><p>Estimated reduction: <span class="rec-savings">$' + new Intl.NumberFormat('en-US').format(rec.savings) + '</span>' + (rec.days > 0 ? ' &middot; Detection improvement: ' + rec.days + ' days faster' : '') + '</p></div>';
+        card.innerHTML = '<span class="rec-rank">' + (i + 1) + '</span><div class="rec-body"><strong>' + rec.label + '</strong><p style="margin:0; font-size:0.9rem;">Potential impact reduction: <span style="color:#22c55e">$' + new Intl.NumberFormat('en-US').format(rec.savings) + '</span></p></div>';
         container.appendChild(card);
     });
-}
-
-function animateValue(el, start, end, duration) {
-    var startTs = null;
-    function step(ts) {
-        if (!startTs) startTs = ts;
-        var progress = Math.min((ts - startTs) / duration, 1);
-        var ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-        el.textContent = new Intl.NumberFormat('en-US').format(Math.floor(ease * (end - start) + start));
-        if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-}
-
-function initThreatTicker() {
-    var tickerContent = document.getElementById('ticker-content');
-    if (!tickerContent) return;
-    tickerContent.style.opacity = '';
-
-    var CISA_KEV_URL = 'https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json';
-    var fallbackThreats = [
-        { id: 'CVE-2024-3094', severity: 'CRITICAL', desc: 'XZ Utils Supply Chain Attack - Remote Code Execution' },
-        { id: 'CVE-2024-21413', severity: 'CRITICAL', desc: 'Microsoft Outlook Moniker Link RCE Vulnerability' },
-        { id: 'CVE-2023-4863', severity: 'HIGH', desc: 'Libwebp Heap Buffer Overflow Affecting Major Browsers' },
-        { id: 'ACTOR-VOLT-TYPHOON', severity: 'CRITICAL', desc: 'Nation-state actor targeting US critical infrastructure pre-positioning' },
-        { id: 'CVE-2024-001', severity: 'MEDIUM', desc: 'Cloud Provider API Rate Limiting Bypass' },
-        { id: 'CVE-2024-23897', severity: 'CRITICAL', desc: 'Jenkins Arbitrary File Read leading to RCE' },
-        { id: 'CVE-2024-3400', severity: 'CRITICAL', desc: 'Palo Alto Networks PAN-OS Command Injection' },
-        { id: 'APT29', severity: 'HIGH', desc: 'Midnight Blizzard campaigns targeting cloud tenants' },
-        { id: 'CVE-2023-23397', severity: 'CRITICAL', desc: 'Microsoft Outlook NTLM Relay Elevation of Privilege' },
-        { id: 'CVE-2023-38831', severity: 'HIGH', desc: 'WinRAR Remote Code Execution via Self-Extracting Archives' },
-        { id: 'CL0P-RANSOMWARE', severity: 'CRITICAL', desc: 'Mass exploitation of file transfer appliances (MOVEit, GoAnywhere)' },
-        { id: 'CVE-2023-4966', severity: 'HIGH', desc: 'Citrix NetScaler Information Disclosure (Citrix Bleed)' },
-        { id: 'SCATTERED-SPIDER', severity: 'HIGH', desc: 'Social engineering campaigns targeting Help Desk workflows' },
-        { id: 'CVE-2024-1709', severity: 'CRITICAL', desc: 'ConnectWise ScreenConnect Authentication Bypass' },
-        { id: 'CVE-2024-21762', severity: 'CRITICAL', desc: 'Fortinet FortiOS Out-of-Bounds Write SSLVPN' },
-        { id: 'BLACKCAT/ALPHV', severity: 'CRITICAL', desc: 'Ransomware-as-a-Service group targeting healthcare sector' },
-        { id: 'CVE-2023-20198', severity: 'CRITICAL', desc: 'Cisco IOS XE Web UI Privilege Escalation' },
-        { id: 'LOCKBIT-3.0', severity: 'HIGH', desc: 'Resurgence of affiliate operations targeting manufacturing' },
-        { id: 'CVE-2023-3519', severity: 'CRITICAL', desc: 'Citrix ADC/Gateway Unauthenticated Remote Code Execution' }
-    ];
-
-    function doFetch() {
-        updateTickerUI([{ id: 'STATUS', severity: 'INFO', desc: 'Connecting to Global Cyber Intelligence Feed...' }]);
-        var controller = new AbortController();
-        var tid = setTimeout(function () { controller.abort(); }, 2000);
-        fetch(CISA_KEV_URL, { signal: controller.signal }).then(function (r) {
-            clearTimeout(tid);
-            if (!r.ok) throw new Error('unavailable');
-            return r.json();
-        }).then(function (data) {
-            if (data && data.vulnerabilities) {
-                updateTickerUI(data.vulnerabilities.slice(0, 10).map(function (v) {
-                    return { id: v.cveID, severity: 'CRITICAL', desc: v.vulnerabilityName };
-                }));
-            } else { throw new Error('bad data'); }
-        }).catch(function () { updateTickerUI(fallbackThreats); });
-    }
-
-    function updateTickerUI(items) {
-        var baseHtml = items.map(function (item) {
-            var cls = item.severity === 'CRITICAL' ? 'severity-critical' : item.severity === 'HIGH' ? 'severity-high' : 'severity-medium';
-            return '<span class="ticker-item"><span class="' + cls + '">[' + item.severity + '] ' + item.id + '</span><span>' + item.desc + '</span></span>';
-        }).join('');
-        
-        // Duplicate content enough times to ensure smooth scrolling
-        // We want at least 4 copies to be safe for wide screens
-        tickerContent.innerHTML = baseHtml + baseHtml + baseHtml + baseHtml;
-    }
-
-    doFetch();
-}
-
-function initHeroCanvas() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var canvas = document.getElementById('hero-canvas');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-
-    var width, height, points, maxDist;
-
-    function resize() {
-        width = canvas.width = canvas.offsetWidth;
-        height = canvas.height = canvas.offsetHeight;
-        maxDist = Math.min(width, height) * 0.12;
-        points = [];
-        var count = Math.floor((width * height) / 12000);
-        for (var i = 0; i < count; i++) {
-            points.push({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                vx: (Math.random() - 0.5) * 0.3,
-                vy: (Math.random() - 0.5) * 0.3,
-                r: Math.random() * 1.5 + 0.5
-            });
-        }
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    var isVisible = true;
-    var observer = new IntersectionObserver(function(entries) {
-        isVisible = entries[0].isIntersecting;
-    });
-    observer.observe(canvas);
-
-    function draw() {
-        if (!isVisible) { requestAnimationFrame(draw); return; }
-
-        ctx.clearRect(0, 0, width, height);
-
-        for (var i = 0; i < points.length; i++) {
-            var p = points[i];
-            p.x += p.vx;
-            p.y += p.vy;
-            if (p.x < 0 || p.x > width) p.vx *= -1;
-            if (p.y < 0 || p.y > height) p.vy *= -1;
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(220, 38, 38, 0.4)';
-            ctx.fill();
-
-            for (var j = i + 1; j < points.length; j++) {
-                var q = points[j];
-                var dx = p.x - q.x;
-                var dy = p.y - q.y;
-                var dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < maxDist) {
-                    ctx.beginPath();
-                    ctx.moveTo(p.x, p.y);
-                    ctx.lineTo(q.x, q.y);
-                    ctx.strokeStyle = 'rgba(220, 38, 38, ' + (0.08 * (1 - dist / maxDist)) + ')';
-                    ctx.lineWidth = 0.5;
-                    ctx.stroke();
-                }
-            }
-        }
-        requestAnimationFrame(draw);
-    }
-    draw();
-}
-
-function initTerminalTyper() {
-    var body = document.getElementById('terminal-body');
-    if (!body) return;
-
-    var lines = [
-        { prompt: true, text: 'nmap -sV -sC -p- 10.10.14.0/24' },
-        { output: true, text: 'Discovered 3 hosts up, 47 open ports' },
-        { output: true, text: 'PORT     STATE  SERVICE    VERSION' },
-        { output: true, text: '22/tcp   open   ssh        OpenSSH 8.9' },
-        { output: true, text: '80/tcp   open   http       nginx 1.24.0' },
-        { output: true, text: '443/tcp  open   ssl/https  Apache 2.4.57' },
-        { output: true, text: '3306/tcp open   mysql      MySQL 8.0.35' },
-        { prompt: true, text: 'crd-exploit --target 10.10.14.12 --module auth-bypass' },
-        { warn: true, text: '[!] Authentication bypass confirmed on /admin' },
-        { success: true, text: '[+] Shell obtained - www-data@target' },
-        { prompt: true, text: 'crd-privesc --enum' },
-        { output: true, text: 'Checking sudo misconfigurations...' },
-        { success: true, text: '[+] SUID binary: /usr/bin/find' },
-        { success: true, text: '[+] Privilege escalation: www-data -> root' },
-        { prompt: true, text: 'crd-report --generate --format pdf' },
-        { success: true, text: '[+] Report generated: CRD-2026-0212.pdf' }
-    ];
-
-    body.innerHTML = '';
-    var lineIdx = 0;
-    var charIdx = 0;
-    var currentEl = null;
-
-    function typeNext() {
-        if (lineIdx >= lines.length) {
-            setTimeout(function() {
-                body.innerHTML = '';
-                lineIdx = 0;
-                charIdx = 0;
-                currentEl = null;
-                typeNext();
-            }, 4000);
-            return;
-        }
-
-        var line = lines[lineIdx];
-
-        if (!currentEl) {
-            currentEl = document.createElement('div');
-            currentEl.style.minHeight = '1.4em';
-            if (line.prompt) {
-                var promptSpan = document.createElement('span');
-                promptSpan.className = 'term-prompt';
-                promptSpan.textContent = '$ ';
-                currentEl.appendChild(promptSpan);
-            }
-            body.appendChild(currentEl);
-        }
-
-        var fullText = line.text;
-        if (charIdx < fullText.length) {
-            if (line.prompt) {
-                var cmdSpan = currentEl.querySelector('.term-cmd');
-                if (!cmdSpan) {
-                    cmdSpan = document.createElement('span');
-                    cmdSpan.className = 'term-cmd';
-                    currentEl.appendChild(cmdSpan);
-                }
-                cmdSpan.textContent = fullText.substring(0, charIdx + 1);
-            } else {
-                var cls = line.success ? 'term-success' : line.warn ? 'term-warn' : 'term-output';
-                currentEl.className = cls;
-                currentEl.textContent = fullText.substring(0, charIdx + 1);
-            }
-            charIdx++;
-            var speed = line.prompt ? 35 : 12;
-            setTimeout(typeNext, speed + Math.random() * 15);
-        } else {
-            lineIdx++;
-            charIdx = 0;
-            currentEl = null;
-            var pause = line.prompt ? 600 : 150;
-            setTimeout(typeNext, pause);
-        }
-
-        while (body.scrollHeight > body.clientHeight) {
-            if (body.firstChild) body.removeChild(body.firstChild);
-            else break;
-        }
-    }
-
-    setTimeout(typeNext, 800);
-}
-
-function initContactForm() {
-    var form = document.getElementById('contactForm');
-    if (!form) return;
-
-    var successEl = document.getElementById('form-success');
-    var errorEl = document.getElementById('form-error');
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (successEl) successEl.style.display = 'none';
-        if (errorEl) errorEl.style.display = 'none';
-
-        var btn = form.querySelector('button[type="submit"]');
-        var originalText = btn ? btn.textContent : '';
-        if (btn) { btn.disabled = true; btn.textContent = 'Transmitting...'; }
-
-        fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-        }).then(function(r) {
-            if (r.ok) {
-                if (successEl) { successEl.style.display = 'block'; }
-                form.reset();
-            } else { throw new Error('fail'); }
-        }).catch(function() {
-            if (errorEl) { errorEl.style.display = 'block'; }
-        }).finally(function() {
-            if (btn) { btn.disabled = false; btn.textContent = originalText; }
-        });
-    });
-}
-
-function initCounters() {
-    var stats = document.querySelectorAll('.stat-number');
-    var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if(entry.isIntersecting) {
-                var target = parseInt(entry.target.getAttribute('data-target'));
-                animateValue(entry.target, 0, target, 2500);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    stats.forEach(function(s) { observer.observe(s); });
 }
