@@ -373,17 +373,22 @@ function initThreatTicker() {
     }
 
     function updateTickerUI(items) {
-        var html = items.map(function (item) {
+        var baseHtml = items.map(function (item) {
             var cls = item.severity === 'CRITICAL' ? 'severity-critical' : item.severity === 'HIGH' ? 'severity-high' : 'severity-medium';
             return '<span class="ticker-item"><span class="' + cls + '">[' + item.severity + '] ' + item.id + '</span><span>' + item.desc + '</span></span>';
         }).join('');
-        tickerContent.innerHTML = html + html;
+        
+        // Duplicate content enough times to ensure smooth scrolling
+        // We want at least 4 copies to be safe for wide screens
+        tickerContent.innerHTML = baseHtml + baseHtml + baseHtml + baseHtml;
     }
 
     doFetch();
 }
 
 function initMatrixEffect() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     var canvas = document.getElementById('matrix-bg');
     if (!canvas) return;
     var ctx = canvas.getContext('2d');
@@ -401,7 +406,18 @@ function initMatrixEffect() {
         ypos = Array(cols).fill(0);
     });
 
+    var isVisible = true;
+    var observer = new IntersectionObserver(function(entries) {
+        isVisible = entries[0].isIntersecting;
+    });
+    observer.observe(canvas);
+
     function step() {
+        if (!isVisible) {
+            requestAnimationFrame(step);
+            return;
+        }
+
         ctx.fillStyle = 'rgba(15, 23, 42, 0.05)';
         ctx.fillRect(0, 0, width, height);
         
