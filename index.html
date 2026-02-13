@@ -1,718 +1,598 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cube Root Dynamics | Professional Offensive Security</title>
-    <meta name="description"
-        content="We identify security risks before they become breaches. Comprehensive penetration testing and security assessment services for forward-thinking organizations.">
-    <meta name="keywords"
-        content="penetration testing, security assessment, vulnerability management, ethical hacking, business risk reduction">
+    <title>Cube Root Dynamics | Offensive Security & Risk Simulation</title>
+    <meta name="description" content="Advanced penetration testing and red team operations. We break in so real attackers can't.">
+    <meta name="keywords" content="pentest, red team, offensive security, vulnerability assessment, cybersecurity">
     <link rel="canonical" href="https://cuberootdynamics.com">
-
-    <meta property="og:title" content="Cube Root Dynamics - Advanced Security Assessments">
-    <meta property="og:description"
-        content="Understand your true risk posture. We simulate real-world attacks to help you strengthen your defenses.">
-    <meta property="og:image" content="https://cuberootdynamics.com/og-image.jpg">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cube Root Dynamics">
+    <meta property="og:description" content="We Break In. So Real Attackers Can't.">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://cuberootdynamics.com">
-
+    <meta property="og:image" content="https://cuberootdynamics.com/og-image.jpg">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='%23dc2626' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M32 4 L12 14 V30 C12 42 20 54 32 60 C44 54 52 42 52 30 V14 Z' fill='%230a0a0f'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23dc2626' stroke='none'/%3E%3Cpath d='M32 26 V18 M32 38 V46 M26 32 H18 M38 32 H46' stroke-width='3'/%3E%3C/svg%3E">
 
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='%23ef4444' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M32 4 L12 14 V30 C12 42 20 54 32 60 C44 54 52 42 52 30 V14 Z' fill='%230f172a'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23ef4444' stroke='none'/%3E%3Cpath d='M32 26 V18 M32 38 V46 M26 32 H18 M38 32 H46' stroke-width='3'/%3E%3C/svg%3E">
+    <!-- Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "name": "Cube Root Dynamics",
-      "image": "https://cuberootdynamics.com/og-image.jpg",
-      "@id": "https://cuberootdynamics.com",
       "url": "https://cuberootdynamics.com",
-      "telephone": "",
-      "priceRange": "$$$",
       "description": "Professional offensive security and penetration testing services.",
+      "priceRange": "$$$",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "US"
       }
     }
     </script>
-
-    <!-- Shared SEO Meta Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Cube Root Dynamics">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
 
-    <!-- Threat Ticker -->
+    <!-- Threat Ticker (Sticky Top) -->
     <div id="threat-ticker" class="threat-ticker">
-        <div class="container">
-            <div class="ticker-flex-container">
-                <div class="ticker-label">LIVE THREAT FEED:</div>
-                <div class="ticker-wrapper">
-                    <div id="ticker-content">Initializing secure connection...</div>
-                </div>
-            </div>
+        <div class="ticker-label">
+            <span class="status-dot"></span> LIVE INTEL
+        </div>
+        <div class="ticker-track">
+            <div id="ticker-content" class="ticker-content">Initializing secure feed...</div>
         </div>
     </div>
 
-    <nav>
-        <div class="container nav-container">
-            <div class="logo">
-                <span>//</span>&nbsp;CUBE ROOT DYNAMICS
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                <span class="logo-mark">_</span>CUBE ROOT DYNAMICS
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="#services">Capabilities</a>
+                <a href="#methodology">Process</a>
+                <a href="#risk-calculator">Risk Engine</a>
+                <a href="#pricing">Engage</a>
+                <a href="#contact" class="nav-cta">Start Ops</a>
             </div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#specialized">Expert Engineering</a></li>
-                <li><a href="#about">Approach</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact" class="cta-button">Engage Us</a></li>
-            </ul>
-            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
 
-    <!-- ... Rest of content ... -->
-
+    <!-- Hero Section -->
     <header class="hero">
-        <canvas id="matrix-bg"></canvas>
-        <div class="container" style="position: relative; z-index: 2;">
-            <h1>Identify Your Weaknesses.<br><span>Before They Are Exploited.</span></h1>
-            <p>We believe the only way to truly secure a network is to test it against real-world threats. We help you
-                find vulnerabilities, fix them, and protect your business from significant financial and reputational
-                loss.</p>
-            <div class="hero-btns">
-                <a href="#contact" class="btn btn-primary">Start an Assessment</a>
-                <a href="#services" class="btn btn-secondary">Explore Capabilities</a>
+        <canvas id="hero-canvas"></canvas>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">OFFENSIVE SECURITY OPERATIONS</div>
+                <h1>We Break In.<br>So Real Attackers Can't.</h1>
+                <p class="hero-sub">We are an operator-led firm simulating sophisticated adversaries. No automated scans. No false positives. Just raw, actionable impact.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Start an Assessment</a>
+                    <a href="#methodology" class="btn btn-ghost">View Our Approach</a>
+                </div>
+            </div>
+            <div class="hero-terminal">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="terminal-title">operator@crd-ops:~</div>
+                    </div>
+                    <div class="terminal-body" id="terminal-body">
+                        <!-- Typewriter effect injected here -->
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
-    <section class="track-record">
+    <section class="stats-bar">
         <div class="container">
+            <div class="stats-label">OPERATIONAL METRICS</div>
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-number" data-target="450">0</div>
-                    <div class="stat-label">Assessments Completed</div>
+                    <div class="stat-desc">Engagements Delivered</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="2400">0</div>
-                    <div class="stat-label">Vulnerabilities Identified</div>
+                    <div class="stat-desc">Critical Findings</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="15000">0</div>
-                    <div class="stat-label">Ops Hours Logged</div>
+                    <div class="stat-desc">Hours in the Field</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="100">0</div>
-                    <div class="stat-label">% Remediation Success</div>
+                    <div class="stat-desc">% Remediation Rate</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="target-segment reveal">
+    <section id="why-us" class="section why-us reveal">
         <div class="container">
-            <div class="segment-grid">
-                <div class="segment-content">
-                    <h2>Go Beyond the Checklist.</h2>
-                    <p>Compliance does not equal security. Determined attackers don't follow a checklist—they look for
-                        the one gap you missed. That is where we operate.</p>
-                    <p>We partner with organizations to provide a realistic view of their security posture. Our goal is
-                        not just to break in, but to provide the actionable intelligence you need to keep intruders out.
-                    </p>
-                    <ul class="check-list">
-                        <li>
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            <div><strong>Adversarial Simulation:</strong> We test your defenses against realistic attack
-                                vectors.</div>
-                        </li>
-                        <li>
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            <div><strong>Business Focus:</strong> We prioritize findings based on risk to your specific
-                                operations.</div>
-                        </li>
-                        <li>
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            <div><strong>Clear Remediation:</strong> We explain exactly how to fix what we find.</div>
-                        </li>
-                    </ul>
-                </div>
-                    <div class="network-visual">
-                        <svg viewBox="0 0 500 350" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">
-                            <defs>
-                                <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-                                    <stop offset="0%" stop-color="#ef4444" stop-opacity="0.6"/>
-                                    <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
-                                </radialGradient>
-                                <filter id="glow">
-                                    <feGaussianBlur stdDeviation="2" result="blur"/>
-                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                                </filter>
-                            </defs>
-                            <!-- Connection lines -->
-                            <g stroke="rgba(239,68,68,0.2)" stroke-width="1">
-                                <line x1="250" y1="80" x2="120" y2="175"><animate attributeName="stroke-opacity" values="0.1;0.35;0.1" dur="3s" repeatCount="indefinite"/></line>
-                                <line x1="250" y1="80" x2="380" y2="175"><animate attributeName="stroke-opacity" values="0.1;0.35;0.1" dur="3.5s" repeatCount="indefinite"/></line>
-                                <line x1="250" y1="80" x2="250" y2="190"><animate attributeName="stroke-opacity" values="0.15;0.4;0.15" dur="2.8s" repeatCount="indefinite"/></line>
-                                <line x1="120" y1="175" x2="70" y2="280"><animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/></line>
-                                <line x1="120" y1="175" x2="180" y2="280"><animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="3.2s" repeatCount="indefinite"/></line>
-                                <line x1="250" y1="190" x2="250" y2="290"><animate attributeName="stroke-opacity" values="0.1;0.35;0.1" dur="3.7s" repeatCount="indefinite"/></line>
-                                <line x1="380" y1="175" x2="320" y2="280"><animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="3.4s" repeatCount="indefinite"/></line>
-                                <line x1="380" y1="175" x2="430" y2="280"><animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4.2s" repeatCount="indefinite"/></line>
-                                <line x1="120" y1="175" x2="250" y2="190" stroke="rgba(239,68,68,0.12)"><animate attributeName="stroke-opacity" values="0.08;0.2;0.08" dur="5s" repeatCount="indefinite"/></line>
-                                <line x1="250" y1="190" x2="380" y2="175" stroke="rgba(239,68,68,0.12)"><animate attributeName="stroke-opacity" values="0.08;0.2;0.08" dur="4.5s" repeatCount="indefinite"/></line>
-                            </g>
-                            <!-- Data pulse particles -->
-                            <g fill="#ef4444">
-                                <circle r="2" opacity="0.7"><animateMotion dur="2.5s" repeatCount="indefinite" path="M250,80 L120,175"/><animate attributeName="opacity" values="0;0.8;0" dur="2.5s" repeatCount="indefinite"/></circle>
-                                <circle r="2" opacity="0.7"><animateMotion dur="3s" repeatCount="indefinite" path="M250,80 L380,175"/><animate attributeName="opacity" values="0;0.8;0" dur="3s" repeatCount="indefinite"/></circle>
-                                <circle r="1.5" opacity="0.5"><animateMotion dur="2s" repeatCount="indefinite" path="M120,175 L70,280"/><animate attributeName="opacity" values="0;0.6;0" dur="2s" repeatCount="indefinite"/></circle>
-                                <circle r="1.5" opacity="0.5"><animateMotion dur="2.2s" repeatCount="indefinite" path="M380,175 L430,280"/><animate attributeName="opacity" values="0;0.6;0" dur="2.2s" repeatCount="indefinite"/></circle>
-                            </g>
-                            <!-- Firewall / gateway node (top center) -->
-                            <g filter="url(#glow)">
-                                <circle cx="250" cy="80" r="18" fill="url(#nodeGlow)"/>
-                                <circle cx="250" cy="80" r="8" fill="#1f2937" stroke="#ef4444" stroke-width="2"><animate attributeName="r" values="7;9;7" dur="3s" repeatCount="indefinite"/></circle>
-                                <text x="250" y="58" text-anchor="middle" fill="rgba(239,68,68,0.8)" font-size="12" font-family="monospace" font-weight="bold">FIREWALL</text>
-                            </g>
-                            <!-- Internal server nodes (middle row) -->
-                            <g filter="url(#glow)">
-                                <circle cx="120" cy="175" r="14" fill="url(#nodeGlow)"/>
-                                <circle cx="120" cy="175" r="6" fill="#1f2937" stroke="#ef4444" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite"/></circle>
-                                <text x="120" y="155" text-anchor="middle" fill="rgba(239,68,68,0.7)" font-size="10" font-family="monospace">WEB SRV</text>
-                            </g>
-                            <g filter="url(#glow)">
-                                <circle cx="250" cy="190" r="14" fill="url(#nodeGlow)"/>
-                                <circle cx="250" cy="190" r="6" fill="#1f2937" stroke="#ef4444" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/></circle>
-                                <text x="250" y="170" text-anchor="middle" fill="rgba(239,68,68,0.7)" font-size="10" font-family="monospace">APP SRV</text>
-                            </g>
-                            <g filter="url(#glow)">
-                                <circle cx="380" cy="175" r="14" fill="url(#nodeGlow)"/>
-                                <circle cx="380" cy="175" r="6" fill="#1f2937" stroke="#ef4444" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="3.5s" repeatCount="indefinite"/></circle>
-                                <text x="380" y="155" text-anchor="middle" fill="rgba(239,68,68,0.7)" font-size="10" font-family="monospace">AD / DC</text>
-                            </g>
-                            <!-- Endpoint nodes (bottom row) -->
-                            <g>
-                                <circle cx="70" cy="280" r="4" fill="#1f2937" stroke="rgba(239,68,68,0.4)" stroke-width="1"><animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="4s" repeatCount="indefinite"/></circle>
-                                <text x="70" y="300" text-anchor="middle" fill="rgba(239,68,68,0.5)" font-size="9" font-family="monospace">EP-01</text>
-                            </g>
-                            <g>
-                                <circle cx="180" cy="280" r="4" fill="#1f2937" stroke="rgba(239,68,68,0.4)" stroke-width="1"><animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="3.8s" repeatCount="indefinite"/></circle>
-                                <text x="180" y="300" text-anchor="middle" fill="rgba(239,68,68,0.5)" font-size="9" font-family="monospace">EP-02</text>
-                            </g>
-                            <g>
-                                <circle cx="250" cy="290" r="4" fill="#1f2937" stroke="rgba(239,68,68,0.4)" stroke-width="1"><animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="4.2s" repeatCount="indefinite"/></circle>
-                                <text x="250" y="310" text-anchor="middle" fill="rgba(239,68,68,0.5)" font-size="9" font-family="monospace">DB</text>
-                            </g>
-                            <g>
-                                <circle cx="320" cy="280" r="4" fill="#1f2937" stroke="rgba(239,68,68,0.4)" stroke-width="1"><animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="3.6s" repeatCount="indefinite"/></circle>
-                                <text x="320" y="300" text-anchor="middle" fill="rgba(239,68,68,0.5)" font-size="9" font-family="monospace">EP-03</text>
-                            </g>
-                            <g>
-                                <circle cx="430" cy="280" r="4" fill="#1f2937" stroke="rgba(239,68,68,0.4)" stroke-width="1"><animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="4.4s" repeatCount="indefinite"/></circle>
-                                <text x="430" y="300" text-anchor="middle" fill="rgba(239,68,68,0.5)" font-size="9" font-family="monospace">EP-04</text>
-                            </g>
-                            <!-- Subtle scan line -->
-                            <rect x="0" y="0" width="500" height="3" fill="rgba(239,68,68,0.08)">
-                                <animate attributeName="y" values="-3;350" dur="8s" repeatCount="indefinite"/>
-                            </rect>
-                        </svg>
-                    </div>
+            <div class="section-head">
+                <h2>Why Cube Root?</h2>
+                <p>Most firms sell scans. We sell security.</p>
             </div>
-        </div>
-    </section>
-
-    <section id="services" class="services reveal">
-        <div class="container">
-            <div class="section-header">
-                <h2>Security Assessment Services</h2>
-                <p>Rigorous testing to ensure your critical assets are protected.</p>
-            </div>
-            <div class="grid-3">
-                <div class="card">
+            <div class="cards-grid">
+                <div class="feature-card">
                     <div class="card-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
-                            </path>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                     </div>
-                    <h3>Penetration Testing</h3>
-                    <p>We systematically check your networks and applications for weak points. Whether it's a web app or
-                        your internal network, we identify where an attacker could get in.</p>
+                    <h3>Operator-Led</h3>
+                    <p>Our team consists of career offensive security engineers, not junior analysts. We use manual techniques that automated tools miss.</p>
                 </div>
-                <div class="card">
+                <div class="feature-card">
                     <div class="card-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
                     </div>
-                    <h3>Red Team Operations</h3>
-                    <p>A full-scope simulation of a targeted attack. We test your detection and response capabilities by
-                        operating like a sophisticated, real-world adversary.</p>
+                    <h3>Business-First Reporting</h3>
+                    <p>We don't just dump CVSS scores. We contextually analyze every finding to determine its real financial and operational impact on your specific business.</p>
                 </div>
-                <div class="card">
+                <div class="feature-card">
                     <div class="card-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
-                            </path>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
                     </div>
-                    <h3>External Risk Review</h3>
-                    <p>We map out your digital footprint to spot exposed servers, unpatched systems, and other
-                        low-hanging fruit that attackers target first.</p>
+                    <h3>True Remediation</h3>
+                    <p>Finding bugs is easy. Fixing them is hard. We partner with your engineering team to verify patches and ensure the door is actually closed.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Specialized Engineering Section -->
-    <section id="specialized" class="services alt-bg reveal">
+    <section id="services" class="section services reveal">
         <div class="container">
-            <div class="section-header">
-                <h2>Specialized Capabilities</h2>
-                <p>Advanced technical services for complex environments.</p>
+            <div class="section-head">
+                <h2>Operational Capabilities</h2>
+                <p>Full-spectrum offensive security, from reconnaissance to remediation.</p>
             </div>
-            <div class="grid-3">
-                <div class="card">
-                    <div class="card-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
+            <div class="services-grid">
+                <!-- Core 1 -->
+                <div class="service-card">
+                    <div class="svc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
                     </div>
-                    <h3>Custom Emulation Tooling</h3>
-                    <p>We develop specific testing tools to validate your defenses against unique or emerging threat
-                        vectors, ensuring your security controls work as intended.</p>
+                    <h3>Network Penetration</h3>
+                    <p>Comprehensive assessment of internal and external infrastructure. We identify weak points in servers, firewalls, and network architecture.</p>
+                    <a href="#contact" class="svc-link">Learn more →</a>
                 </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
-                            </path>
-                        </svg>
+                <!-- Core 2 -->
+                <div class="service-card">
+                    <div class="svc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                    </div>
+                    <h3>Web App Security</h3>
+                    <p>Deep-dive testing of web applications and APIs (REST/GraphQL). We hunt for logic flaws, injection attacks, and auth bypasses.</p>
+                    <a href="#contact" class="svc-link">Learn more →</a>
+                </div>
+                <!-- Core 3 -->
+                <div class="service-card">
+                    <div class="svc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
+                    </div>
+                    <h3>Red Teaming</h3>
+                    <p>Adversarial simulation. We test your Blue Team's detection and response capabilities by emulating a real-world multi-stage attack.</p>
+                    <a href="#contact" class="svc-link">Learn more →</a>
+                </div>
+                <!-- Spec 1 -->
+                <div class="service-card">
+                    <div class="svc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                    <h3>Cloud Security</h3>
+                    <p>AWS, Azure, and GCP configuration reviews. We identify IAM misconfigurations, exposed buckets, and serverless vulnerabilities.</p>
+                    <a href="#contact" class="svc-link">Learn more →</a>
+                </div>
+                <!-- Spec 2 -->
+                <div class="service-card">
+                    <div class="svc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+                    </div>
+                    <h3>Hardware/IoT</h3>
+                    <p>Physical device assessment. Firmware analysis, bus sniffing (SPI/I2C), and hardware interface testing for connected devices.</p>
+                    <a href="#contact" class="svc-link">Learn more →</a>
+                </div>
+                <!-- Spec 3 -->
+                <div class="service-card">
+                    <div class="svc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
                     </div>
                     <h3>Vulnerability Research</h3>
-                    <p>Our team investigates software and systems to identify zero-day vulnerabilities, helping you
-                        secure your products before they go to market.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3>Hardware Security</h3>
-                    <p>Assessment of physical devices and IoT systems to identify risks in firmware and hardware
-                        interfaces.</p>
+                    <p>Zero-day discovery. We reverse engineer proprietary software to find novel vulnerabilities before they go to market.</p>
+                    <a href="#contact" class="svc-link">Learn more →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="risk-calculator" class="risk-section reveal">
-        <div class="risk-bg-glow"></div>
+    <section id="methodology" class="section methodology reveal">
         <div class="container">
-            <div class="risk-header-center">
-                <h2>Security Posture Risk Assessment</h2>
-                <p>A multi-factor analysis grounded in IBM's 2024 Cost of a Data Breach Report and real-world incident data.</p>
+            <div class="section-head">
+                <h2>How We Work</h2>
+                <p>A structured, rigorous approach to offensive operations.</p>
             </div>
+            <div class="process-timeline">
+                <div class="process-line"></div>
+                <div class="process-step">
+                    <div class="step-num">01</div>
+                    <h3>Scope</h3>
+                    <p>We define rules of engagement and identify critical assets.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">02</div>
+                    <h3>Test</h3>
+                    <p>We execute the attack plan using manual and automated methods.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">03</div>
+                    <h3>Report</h3>
+                    <p>We deliver detailed findings with proof-of-concept and impact.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">04</div>
+                    <h3>Fix</h3>
+                    <p>We verify your remediation efforts to ensure the gap is closed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <div class="risk-card glass-panel">
-                <div class="ra-progress">
-                    <div class="ra-step active" data-step="1"><span class="ra-step-num">1</span> Organization</div>
-                    <div class="ra-step" data-step="2"><span class="ra-step-num">2</span> Security Posture</div>
-                    <div class="ra-step" data-step="3"><span class="ra-step-num">3</span> Compliance</div>
+    <section class="section social-proof reveal">
+        <div class="container">
+            <div class="badges-row">
+                <span class="badge-text">OWASP</span>
+                <span class="badge-sep">/</span>
+                <span class="badge-text">MITRE ATT&CK</span>
+                <span class="badge-sep">/</span>
+                <span class="badge-text">PTES</span>
+                <span class="badge-sep">/</span>
+                <span class="badge-text">NIST CSF</span>
+                <span class="badge-sep">/</span>
+                <span class="badge-text">CVSS</span>
+            </div>
+            <div class="testimonial">
+                <blockquote>
+                    "Cube Root Dynamics found critical vulnerabilities in our infrastructure that two previous firms missed entirely. Their reporting was the most actionable we've ever received."
+                </blockquote>
+                <cite>— Security Director, Series B SaaS Company</cite>
+            </div>
+        </div>
+    </section>
+
+    <section id="risk-calculator" class="section risk-section reveal">
+        <div class="container">
+            <div class="section-head">
+                <h2>Risk Calculator</h2>
+                <p>Quantify your exposure based on industry data.</p>
+            </div>
+            
+            <div class="risk-interface glass-panel">
+                <div class="risk-progress">
+                    <div class="ra-step active" data-step="1"><span class="step-marker">1</span> Organization</div>
+                    <div class="ra-step" data-step="2"><span class="step-marker">2</span> Controls</div>
+                    <div class="ra-step" data-step="3"><span class="step-marker">3</span> Compliance</div>
                 </div>
 
                 <form id="risk-form">
+                    <!-- Step 1 -->
                     <div class="ra-panel active" id="ra-step-1">
-                        <h3 class="ra-panel-title">Organization Profile</h3>
-                        <div class="input-group">
-                            <label for="calc-industry">Industry</label>
-                            <div class="select-wrapper">
-                                <select id="calc-industry" class="premium-select">
-                                    <option value="healthcare">Healthcare</option>
-                                    <option value="finance">Finance / Banking</option>
-                                    <option value="tech">Technology / SaaS</option>
-                                    <option value="retail">Retail / E-Commerce</option>
-                                    <option value="energy">Energy / Infrastructure</option>
-                                    <option value="other">General Business</option>
-                                </select>
-                                <svg class="select-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="calc-industry">Industry Sector</label>
+                                <div class="select-box">
+                                    <select id="calc-industry">
+                                        <option value="healthcare">Healthcare</option>
+                                        <option value="finance">Finance / Banking</option>
+                                        <option value="tech">Technology / SaaS</option>
+                                        <option value="retail">Retail / E-Commerce</option>
+                                        <option value="energy">Energy / Infrastructure</option>
+                                        <option value="other">General Business</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="calc-employees">Organization Size</label>
+                                <div class="select-box">
+                                    <select id="calc-employees">
+                                        <option value="small">1 - 50 Employees</option>
+                                        <option value="mid-small">51 - 200 Employees</option>
+                                        <option value="mid">201 - 1,000 Employees</option>
+                                        <option value="mid-large">1,001 - 5,000 Employees</option>
+                                        <option value="enterprise">5,000+ Employees</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="record-count">Sensitive Records (Estimated)</label>
+                                <div class="range-wrapper">
+                                    <input type="number" id="record-count" value="50000">
+                                    <input type="range" id="record-slider" min="1000" max="1000000" step="1000" value="50000">
+                                </div>
                             </div>
                         </div>
-                        <div class="input-group">
-                            <label for="calc-employees">Employee Count</label>
-                            <div class="select-wrapper">
-                                <select id="calc-employees" class="premium-select">
-                                    <option value="small">1 &ndash; 50</option>
-                                    <option value="mid-small">51 &ndash; 200</option>
-                                    <option value="mid">201 &ndash; 1,000</option>
-                                    <option value="mid-large">1,001 &ndash; 5,000</option>
-                                    <option value="enterprise">5,000+</option>
-                                </select>
-                                <svg class="select-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label for="record-count">Sensitive Records at Risk</label>
-                            <div class="input-wrapper">
-                                <input type="number" id="record-count" class="premium-input" placeholder="e.g. 50000" min="0">
-                                <span class="input-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path></svg></span>
-                            </div>
-                            <div class="slider-container">
-                                <input type="range" id="record-slider" min="1000" max="1000000" step="1000" value="50000" class="premium-range">
-                            </div>
-                        </div>
-                        <div class="ra-nav">
-                            <span></span>
-                            <button type="button" class="btn-ra-next" data-target="2">Next: Security Posture</button>
+                        <div class="panel-actions">
+                            <button type="button" class="btn btn-primary btn-ra-next" data-target="2">Next Step</button>
                         </div>
                     </div>
 
+                    <!-- Step 2 -->
                     <div class="ra-panel" id="ra-step-2">
-                        <h3 class="ra-panel-title">Security Posture Assessment</h3>
-                        <p class="ra-panel-sub">Toggle each control that your organization currently has in place.</p>
-                        <div class="posture-grid">
-                            <label class="toggle-row"><span class="toggle-label">Dedicated security team or CISO</span><input type="checkbox" id="p-ciso"><span class="toggle-switch"></span></label>
-                            <label class="toggle-row"><span class="toggle-label">Tested incident response plan</span><input type="checkbox" id="p-ir"><span class="toggle-switch"></span></label>
-                            <label class="toggle-row"><span class="toggle-label">Security automation / SIEM</span><input type="checkbox" id="p-siem"><span class="toggle-switch"></span></label>
-                            <label class="toggle-row"><span class="toggle-label">Regular penetration testing</span><input type="checkbox" id="p-pentest"><span class="toggle-switch"></span></label>
-                            <label class="toggle-row"><span class="toggle-label">Employee security awareness training</span><input type="checkbox" id="p-training"><span class="toggle-switch"></span></label>
-                            <label class="toggle-row"><span class="toggle-label">Data encrypted at rest and in transit</span><input type="checkbox" id="p-encrypt"><span class="toggle-switch"></span></label>
-                            <label class="toggle-row"><span class="toggle-label">MFA enforced on critical systems</span><input type="checkbox" id="p-mfa"><span class="toggle-switch"></span></label>
-                            <label class="toggle-row"><span class="toggle-label">Network segmentation in place</span><input type="checkbox" id="p-segment"><span class="toggle-switch"></span></label>
+                        <div class="toggles-grid">
+                            <label class="toggle-card">
+                                <input type="checkbox" id="p-ciso">
+                                <div class="toggle-body">
+                                    <span class="toggle-title">Dedicated CISO</span>
+                                    <span class="toggle-desc">Security leadership team</span>
+                                </div>
+                            </label>
+                            <label class="toggle-card">
+                                <input type="checkbox" id="p-ir">
+                                <div class="toggle-body">
+                                    <span class="toggle-title">IR Plan</span>
+                                    <span class="toggle-desc">Tested response procedures</span>
+                                </div>
+                            </label>
+                            <label class="toggle-card">
+                                <input type="checkbox" id="p-siem">
+                                <div class="toggle-body">
+                                    <span class="toggle-title">SIEM / SOC</span>
+                                    <span class="toggle-desc">24/7 Monitoring</span>
+                                </div>
+                            </label>
+                            <label class="toggle-card">
+                                <input type="checkbox" id="p-pentest">
+                                <div class="toggle-body">
+                                    <span class="toggle-title">Pentesting</span>
+                                    <span class="toggle-desc">Regular offensive tests</span>
+                                </div>
+                            </label>
+                            <label class="toggle-card">
+                                <input type="checkbox" id="p-training">
+                                <div class="toggle-body">
+                                    <span class="toggle-title">Training</span>
+                                    <span class="toggle-desc">Employee awareness</span>
+                                </div>
+                            </label>
+                            <label class="toggle-card">
+                                <input type="checkbox" id="p-encrypt">
+                                <div class="toggle-body">
+                                    <span class="toggle-title">Encryption</span>
+                                    <span class="toggle-desc">At rest and transit</span>
+                                </div>
+                            </label>
+                            <label class="toggle-card">
+                                <input type="checkbox" id="p-mfa">
+                                <div class="toggle-body">
+                                    <span class="toggle-title">MFA</span>
+                                    <span class="toggle-desc">Multi-factor auth</span>
+                                </div>
+                            </label>
+                            <label class="toggle-card">
+                                <input type="checkbox" id="p-segment">
+                                <div class="toggle-body">
+                                    <span class="toggle-title">Segmentation</span>
+                                    <span class="toggle-desc">Network isolation</span>
+                                </div>
+                            </label>
                         </div>
-                        <div class="ra-nav">
-                            <button type="button" class="btn-ra-back" data-target="1">Back</button>
-                            <button type="button" class="btn-ra-next" data-target="3">Next: Compliance</button>
+                        <div class="panel-actions">
+                            <button type="button" class="btn btn-ghost btn-ra-back" data-target="1">Back</button>
+                            <button type="button" class="btn btn-primary btn-ra-next" data-target="3">Next Step</button>
                         </div>
                     </div>
 
+                    <!-- Step 3 -->
                     <div class="ra-panel" id="ra-step-3">
-                        <h3 class="ra-panel-title">Regulatory Exposure</h3>
-                        <p class="ra-panel-sub">Select all frameworks your organization is subject to.</p>
-                        <div class="compliance-grid">
-                            <label class="check-card"><input type="checkbox" id="c-hipaa"><span class="check-mark"></span><span class="check-text">HIPAA</span></label>
-                            <label class="check-card"><input type="checkbox" id="c-pci"><span class="check-mark"></span><span class="check-text">PCI-DSS</span></label>
-                            <label class="check-card"><input type="checkbox" id="c-gdpr"><span class="check-mark"></span><span class="check-text">GDPR</span></label>
-                            <label class="check-card"><input type="checkbox" id="c-sox"><span class="check-mark"></span><span class="check-text">SOX</span></label>
-                            <label class="check-card"><input type="checkbox" id="c-cmmc"><span class="check-mark"></span><span class="check-text">CMMC</span></label>
-                            <label class="check-card"><input type="checkbox" id="c-none"><span class="check-mark"></span><span class="check-text">None / Unsure</span></label>
+                        <div class="compliance-options">
+                            <label class="checkbox-box"><input type="checkbox" id="c-hipaa"><span>HIPAA</span></label>
+                            <label class="checkbox-box"><input type="checkbox" id="c-pci"><span>PCI-DSS</span></label>
+                            <label class="checkbox-box"><input type="checkbox" id="c-gdpr"><span>GDPR</span></label>
+                            <label class="checkbox-box"><input type="checkbox" id="c-sox"><span>SOX</span></label>
+                            <label class="checkbox-box"><input type="checkbox" id="c-cmmc"><span>CMMC</span></label>
+                            <label class="checkbox-box"><input type="checkbox" id="c-none"><span>None</span></label>
                         </div>
-                        <div class="ra-nav">
-                            <button type="button" class="btn-ra-back" data-target="2">Back</button>
-                            <button type="submit" class="btn-calculate"><span class="btn-text">RUN ASSESSMENT</span></button>
+                        <div class="panel-actions">
+                            <button type="button" class="btn btn-ghost btn-ra-back" data-target="2">Back</button>
+                            <button type="submit" class="btn btn-red btn-calculate"><span class="btn-text">RUN ASSESSMENT</span></button>
                         </div>
                     </div>
                 </form>
 
-                <div id="risk-dashboard" class="ra-dashboard">
-                    <div class="dash-top-row">
-                        <div class="dash-stat-card">
-                            <span class="dash-stat-label">UNMITIGATED EXPOSURE</span>
-                            <div class="cost-wrapper"><span class="currency">$</span><span id="cost-unmitigated" class="cost-value">0</span></div>
-                            <span class="dash-stat-note">If breached with zero security controls</span>
+                <div id="risk-dashboard" class="dashboard-hidden">
+                    <div class="dash-grid">
+                        <div class="dash-card danger">
+                            <h4>Unmitigated Exposure</h4>
+                            <div class="dash-val">$<span id="cost-unmitigated">0</span></div>
+                            <p>Estimated cost without security controls</p>
                         </div>
-                        <div class="dash-stat-card adjusted">
-                            <span class="dash-stat-label">YOUR ADJUSTED RISK</span>
-                            <div class="cost-wrapper"><span class="currency">$</span><span id="cost-adjusted" class="cost-value">0</span></div>
-                            <span class="dash-stat-note" id="posture-grade"></span>
+                        <div class="dash-card primary">
+                            <h4>Current Risk Posture</h4>
+                            <div class="dash-val">$<span id="cost-adjusted">0</span></div>
+                            <div id="posture-grade" class="grade-badge"></div>
                         </div>
                     </div>
 
-                    <div class="dash-section">
-                        <h3 class="dash-section-title">Breach Scenario Timeline</h3>
-                        <p class="dash-section-sub">Based on your security posture, here is how an attack would likely unfold.</p>
-                        <div id="breach-timeline" class="breach-timeline"></div>
+                    <div class="dash-block">
+                        <h3>Simulated Breach Timeline</h3>
+                        <div id="breach-timeline" class="timeline-vis"></div>
                     </div>
 
-                    <div class="dash-section">
-                        <h3 class="dash-section-title">Real-World Precedent</h3>
-                        <div id="breach-references" class="breach-refs"></div>
+                    <div class="dash-block">
+                        <h3>Comparable Incidents</h3>
+                        <div id="breach-references" class="breach-refs-grid"></div>
                     </div>
 
-                    <div class="dash-section">
-                        <h3 class="dash-section-title">Total Cost of Inaction</h3>
-                        <div class="tco-compare">
-                            <div class="tco-col tco-invest">
-                                <span class="tco-label">Proactive Security Investment</span>
-                                <span class="tco-val" id="tco-invest">$0</span>
-                                <span class="tco-note">Estimated annual spend for your org size</span>
+                    <div class="dash-block">
+                        <h3>Investment vs. Exposure</h3>
+                        <div class="roi-flex">
+                            <div class="roi-item">
+                                <span>Proactive Investment</span>
+                                <span id="tco-invest" class="roi-num">$0</span>
                             </div>
-                            <div class="tco-vs">vs</div>
-                            <div class="tco-col tco-breach">
-                                <span class="tco-label">Estimated Breach Cost</span>
-                                <span class="tco-val" id="tco-breach">$0</span>
-                                <span class="tco-note">Your adjusted risk exposure</span>
+                            <div class="roi-vs">VS</div>
+                            <div class="roi-item">
+                                <span>Breach Liability</span>
+                                <span id="tco-breach" class="roi-num">$0</span>
                             </div>
                         </div>
-                        <div class="tco-ratio" id="tco-ratio"></div>
+                        <div id="tco-ratio" class="roi-text"></div>
                     </div>
 
-                    <div class="dash-section">
-                        <h3 class="dash-section-title">Highest-Impact Recommendations</h3>
-                        <div id="recommendations" class="rec-grid"></div>
+                    <div class="dash-block">
+                        <h3>Priority Actions</h3>
+                        <div id="recommendations" class="recs-list"></div>
                     </div>
 
-                    <div class="dash-footer">
-                        <p class="dash-quote">"Nobody knew cybersecurity could be so complicated."</p>
-                        <p class="dash-cite">Source data: IBM Cost of a Data Breach Report 2024. Breach references from public incident disclosures.</p>
-                        <div class="dash-cta-row">
-                            <button type="button" class="btn btn-secondary" onclick="window.print()">Download Risk Brief</button>
-                            <a href="#contact" class="btn btn-primary">Schedule a Scoping Call</a>
-                        </div>
+                    <div class="dash-actions">
+                         <button class="btn btn-secondary" onclick="window.print()">Export Report</button>
+                         <a href="#contact" class="btn btn-primary">Discuss with Our Team</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Work With Us -->
-    <section id="why-us" class="why-us-section reveal">
+    <section id="pricing" class="section pricing reveal">
         <div class="container">
-            <div class="section-header">
-                <h2>Why Work With Us</h2>
-            </div>
-            <div class="grid-3">
-                <div class="value-card">
-                    <h3>Operator Experience</h3>
-                    <p>Our assessments are conducted by practitioners who have spent years in offensive security — not junior analysts running automated scanners.</p>
-                </div>
-                <div class="value-card">
-                    <h3>Business-First Reporting</h3>
-                    <p>We translate technical findings into business risk. Your executive team gets actionable intelligence, not a vulnerability dump.</p>
-                </div>
-                <div class="value-card">
-                    <h3>Remediation Support</h3>
-                    <p>We don't just find problems and leave. We work with your engineering team to verify fixes and close gaps.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Methodology Section -->
-    <section id="methodology" class="methodology-section reveal">
-        <div class="container">
-            <div class="section-header">
-                <h2>The Kill Chain</h2>
-                <p>We emulate the exact steps sophisticated attackers use to breach your perimeter.</p>
-            </div>
-            <div class="method-steps">
-                <div class="method-step">
-                    <div class="step-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                    </div>
-                    <h3>1. Reconnaissance</h3>
-                    <p>OSINT gathering, footprint mapping, and asset discovery to identify exposed surfaces.</p>
-                </div>
-                <div class="method-arrow">→</div>
-                <div class="method-step">
-                    <div class="step-icon">
-                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                    </div>
-                    <h3>2. Enumeration</h3>
-                    <p>Port scanning, service fingerprinting, and vulnerability identification.</p>
-                </div>
-                <div class="method-arrow">→</div>
-                <div class="method-step">
-                    <div class="step-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h3>3. Exploitation</h3>
-                    <p>Controlled execution of exploits to gain access, escalate privileges, and pivot.</p>
-                </div>
-                <div class="method-arrow">→</div>
-                <div class="method-step">
-                    <div class="step-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                    </div>
-                    <h3>4. Reporting</h3>
-                    <p>Detailed technical findings, impact analysis, and strategic remediation roadmap.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing -->
-    <section id="pricing" class="pricing-section reveal">
-        <div class="container">
-            <div class="section-header">
+            <div class="section-head">
                 <h2>Engagement Models</h2>
-                <p>Flexible options based on your organization's security maturity and goals.</p>
+                <p>Transparent pricing for every stage of security maturity.</p>
             </div>
-            <div class="pricing-grid">
-                <div class="plan-column">
-                    <div class="plan-name">Security Assessment</div>
-                    <div class="plan-desc">One-time engagement to identify and prioritize risk.</div>
-                    <ul class="plan-features">
-                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> External / Internal Pentest</li>
-                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Web Application Testing</li>
-                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Vulnerability Report with Remediation Guidance</li>
-                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Executive Summary</li>
+            <div class="pricing-table">
+                <div class="price-card">
+                    <h3>Assessment</h3>
+                    <div class="price-desc">One-time deep dive to identify immediate risks.</div>
+                    <ul>
+                        <li>Internal / External Pentest</li>
+                        <li>Web Application Testing</li>
+                        <li>Remediation Roadmap</li>
+                        <li>Executive Debrief</li>
                     </ul>
-                    <a href="#contact" class="btn btn-secondary" style="width:100%;justify-content:center;">Request Scope of Work</a>
+                    <a href="#contact" class="btn btn-ghost">Get Quote</a>
                 </div>
-                <div class="plan-column featured">
-                    <div class="plan-badge">Recommended</div>
-                    <div class="plan-name">Continuous Security</div>
-                    <div class="plan-desc">Ongoing security partnership for sustained coverage.</div>
-                    <ul class="plan-features">
-                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Quarterly Penetration Testing</li>
-                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Continuous Vulnerability Scanning</li>
-                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Monthly Security Reporting</li>
-                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Remediation Verification</li>
-                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Priority Scheduling</li>
+                <div class="price-card featured">
+                    <div class="badge">POPULAR</div>
+                    <h3>Continuous</h3>
+                    <div class="price-desc">Ongoing partnership for dynamic environments.</div>
+                    <ul>
+                        <li>Quarterly Penetration Testing</li>
+                        <li>Continuous Scanning</li>
+                        <li>Monthly Status Reports</li>
+                        <li>Remediation Verification</li>
+                        <li>Priority Scheduling</li>
                     </ul>
-                    <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Schedule Consultation</a>
+                    <a href="#contact" class="btn btn-primary">Start Partnership</a>
                 </div>
-                <div class="plan-column">
-                    <div class="plan-name">Enterprise Security</div>
-                    <div class="plan-desc">Full security program for organizations with complex needs.</div>
-                    <ul class="plan-features">
-                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Red Team Operations</li>
-                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> vCISO Advisory</li>
-                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Managed Detection &amp; Response</li>
-                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Incident Response Retainer</li>
-                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Custom Security Training</li>
-                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Dedicated Account Manager</li>
+                <div class="price-card">
+                    <h3>Enterprise</h3>
+                    <div class="price-desc">Full-spectrum security program.</div>
+                    <ul>
+                        <li>Red Team Operations</li>
+                        <li>vCISO Advisory Services</li>
+                        <li>Incident Response Retainer</li>
+                        <li>Custom Training</li>
+                        <li>Dedicated Account Manager</li>
                     </ul>
-                    <a href="#contact" class="btn btn-secondary" style="width:100%;justify-content:center;">Contact Us</a>
+                    <a href="#contact" class="btn btn-ghost">Contact Sales</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form -->
-    <section id="contact" class="contact-section reveal">
+    <section id="contact" class="section contact">
         <div class="container">
-            <div class="section-header">
-                <h2>Secure Your Organization</h2>
-                <p>Contact us to discuss your security testing needs.</p>
-            </div>
-            <div class="form-box">
-                <form id="contactForm" action="https://formspree.io/f/maqdyeyr" method="POST">
-                    <div class="form-group">
-                        <label>Full Name *</label>
-                        <input type="text" name="fullName" class="form-input" placeholder="John Doe" required>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h2>Initiate Contact</h2>
+                    <p>Ready to test your defenses? Every engagement starts with a scoping conversation.</p>
+                    <div class="contact-details">
+                        <div class="cd-item">
+                            <strong>Operations</strong>
+                            <a href="mailto:ops@cuberootdynamics.com">ops@cuberootdynamics.com</a>
+                        </div>
+                        <div class="cd-item">
+                            <strong>Secure Channel</strong>
+                            <a href="#">PGP Key Available on Request</a>
+                        </div>
+                        <div class="cd-item">
+                            <strong>Response Time</strong>
+                            <span style="color: var(--white);">Within 24 hours</span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Business Email *</label>
-                        <input type="email" name="email" class="form-input" placeholder="name@company.com" required>
+                </div>
+                <form id="contactForm" action="https://formspree.io/f/maqdyeyr" method="POST" class="contact-form">
+                    <div class="form-row">
+                        <input type="text" name="fullName" placeholder="Name" required>
+                        <input type="email" name="email" placeholder="Work Email" required>
                     </div>
-                    <div class="form-group">
-                        <label>Company *</label>
-                        <input type="text" name="company" class="form-input" placeholder="Company Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Industry</label>
-                        <select name="industry" class="form-select">
-                            <option value="">Select Industry</option>
-                            <option>Healthcare</option>
-                            <option>Finance</option>
-                            <option>Legal</option>
-                            <option>Manufacturing</option>
-                            <option>Professional Services</option>
-                            <option>Retail</option>
-                            <option>Education</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Security Package Interest</label>
-                        <select name="interest" id="interest" class="form-select">
-                            <option value="">Select Package</option>
-                            <option>Security Assessment</option>
-                            <option>Continuous Security</option>
-                            <option>Enterprise Security</option>
-                            <option>Emergency Response - Need Help Now</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Security Challenges *</label>
-                        <textarea name="challenges" class="form-input" rows="4"
-                            placeholder="Describe your current security challenges and compliance requirements"
-                            required></textarea>
-                    </div>
-                    <div id="form-success"
-                        style="display:none; padding:1rem; background:#10b981; color:white; border-radius:8px; margin-bottom:1rem;">
-                    </div>
-                    <div id="form-error"
-                        style="display:none; padding:1rem; background:#ef4444; color:white; border-radius:8px; margin-bottom:1rem;">
-                    </div>
-                    <button type="submit" class="cta-button" style="width: 100%;">Request Security Assessment</button>
+                    <input type="text" name="company" placeholder="Organization" required>
+                    <select name="interest">
+                        <option value="">Select Engagement Type</option>
+                        <option>Penetration Testing</option>
+                        <option>Red Team Operation</option>
+                        <option>Continuous Security Program</option>
+                        <option>Cloud Security Assessment</option>
+                        <option>Incident Response</option>
+                    </select>
+                    <textarea name="challenges" rows="4" placeholder="Describe your security objectives or concerns" required></textarea>
+                    <button type="submit" class="btn btn-primary full-width">Transmit</button>
+                    <div id="form-success" class="form-msg success">Signal received. We will respond within 24 hours.</div>
+                    <div id="form-error" class="form-msg error">Transmission failed. Please try again or contact us directly.</div>
                 </form>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-links">
-                    <h4>Cube Root Dynamics</h4>
-                    <p style="color: var(--text-muted); line-height: 1.6;">Professional offensive security services.
-                        Identifying risk through rigorous simulation.</p>
+            <div class="footer-cols">
+                <div class="col">
+                    <div class="footer-logo">_CUBE ROOT DYNAMICS</div>
+                    <p>Offensive security for the modern enterprise.</p>
                 </div>
-                <div class="footer-links">
+                <div class="col">
                     <h4>Services</h4>
-                    <ul>
-                        <li><a href="#">Network Penetration Testing</a></li>
-                        <li><a href="#">Web Application Security</a></li>
-                        <li><a href="#">Red Team Operations</a></li>
-                        <li><a href="#">Security Advisory</a></li>
-                    </ul>
+                    <a href="#">Network Security</a>
+                    <a href="#">Web Applications</a>
+                    <a href="#">Red Teaming</a>
                 </div>
-                <div class="footer-links">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#">PGP Key</a></li>
-                        <li><a href="#">Responsible Disclosure</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
+                <div class="col">
+                    <h4>Company</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#methodology">Methodology</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="col">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
                 </div>
             </div>
-            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05);">
+            <div class="footer-bottom">
                 &copy; 2026 Cube Root Dynamics. All rights reserved.
             </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
-
 </body>
-
 </html>
