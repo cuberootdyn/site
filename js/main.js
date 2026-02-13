@@ -3,8 +3,10 @@ document.addEventListener('DOMContentLoaded', function () {
     initThreatTicker();
     initHamburger();
     initReveal();
-    initMatrixEffect();
+    initHeroCanvas();
+    initTerminalTyper();
     initCounters();
+    initContactForm();
 });
 
 function initHamburger() {
@@ -386,25 +388,33 @@ function initThreatTicker() {
     doFetch();
 }
 
-function initMatrixEffect() {
+function initHeroCanvas() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    var canvas = document.getElementById('matrix-bg');
+    var canvas = document.getElementById('hero-canvas');
     if (!canvas) return;
     var ctx = canvas.getContext('2d');
-    
-    var width = canvas.width = window.innerWidth;
-    var height = canvas.height = window.innerHeight;
-    
-    var cols = Math.floor(width / 20);
-    var ypos = Array(cols).fill(0);
-    
-    window.addEventListener('resize', function() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-        cols = Math.floor(width / 20);
-        ypos = Array(cols).fill(0);
-    });
+
+    var width, height, points, maxDist;
+
+    function resize() {
+        width = canvas.width = canvas.offsetWidth;
+        height = canvas.height = canvas.offsetHeight;
+        maxDist = Math.min(width, height) * 0.12;
+        points = [];
+        var count = Math.floor((width * height) / 12000);
+        for (var i = 0; i < count; i++) {
+            points.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                r: Math.random() * 1.5 + 0.5
+            });
+        }
+    }
+    resize();
+    window.addEventListener('resize', resize);
 
     var isVisible = true;
     var observer = new IntersectionObserver(function(entries) {
@@ -412,28 +422,163 @@ function initMatrixEffect() {
     });
     observer.observe(canvas);
 
-    function step() {
-        if (!isVisible) {
-            requestAnimationFrame(step);
+    function draw() {
+        if (!isVisible) { requestAnimationFrame(draw); return; }
+
+        ctx.clearRect(0, 0, width, height);
+
+        for (var i = 0; i < points.length; i++) {
+            var p = points[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0 || p.x > width) p.vx *= -1;
+            if (p.y < 0 || p.y > height) p.vy *= -1;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(220, 38, 38, 0.4)';
+            ctx.fill();
+
+            for (var j = i + 1; j < points.length; j++) {
+                var q = points[j];
+                var dx = p.x - q.x;
+                var dy = p.y - q.y;
+                var dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < maxDist) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(q.x, q.y);
+                    ctx.strokeStyle = 'rgba(220, 38, 38, ' + (0.08 * (1 - dist / maxDist)) + ')';
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(draw);
+    }
+    draw();
+}
+
+function initTerminalTyper() {
+    var body = document.getElementById('terminal-body');
+    if (!body) return;
+
+    var lines = [
+        { prompt: true, text: 'nmap -sV -sC -p- 10.10.14.0/24' },
+        { output: true, text: 'Discovered 3 hosts up, 47 open ports' },
+        { output: true, text: 'PORT     STATE  SERVICE    VERSION' },
+        { output: true, text: '22/tcp   open   ssh        OpenSSH 8.9' },
+        { output: true, text: '80/tcp   open   http       nginx 1.24.0' },
+        { output: true, text: '443/tcp  open   ssl/https  Apache 2.4.57' },
+        { output: true, text: '3306/tcp open   mysql      MySQL 8.0.35' },
+        { prompt: true, text: 'crd-exploit --target 10.10.14.12 --module auth-bypass' },
+        { warn: true, text: '[!] Authentication bypass confirmed on /admin' },
+        { success: true, text: '[+] Shell obtained - www-data@target' },
+        { prompt: true, text: 'crd-privesc --enum' },
+        { output: true, text: 'Checking sudo misconfigurations...' },
+        { success: true, text: '[+] SUID binary: /usr/bin/find' },
+        { success: true, text: '[+] Privilege escalation: www-data -> root' },
+        { prompt: true, text: 'crd-report --generate --format pdf' },
+        { success: true, text: '[+] Report generated: CRD-2026-0212.pdf' }
+    ];
+
+    body.innerHTML = '';
+    var lineIdx = 0;
+    var charIdx = 0;
+    var currentEl = null;
+
+    function typeNext() {
+        if (lineIdx >= lines.length) {
+            setTimeout(function() {
+                body.innerHTML = '';
+                lineIdx = 0;
+                charIdx = 0;
+                currentEl = null;
+                typeNext();
+            }, 4000);
             return;
         }
 
-        ctx.fillStyle = 'rgba(15, 23, 42, 0.05)';
-        ctx.fillRect(0, 0, width, height);
-        
-        ctx.fillStyle = '#ef4444';
-        ctx.font = '15px monospace';
-        
-        ypos.forEach(function(y, ind) {
-            var text = String.fromCharCode(0x30A0 + Math.random() * 96);
-            var x = ind * 20;
-            ctx.fillText(text, x, y);
-            if (y > 100 + Math.random() * 10000) ypos[ind] = 0;
-            else ypos[ind] = y + 20;
-        });
-        requestAnimationFrame(step);
+        var line = lines[lineIdx];
+
+        if (!currentEl) {
+            currentEl = document.createElement('div');
+            currentEl.style.minHeight = '1.4em';
+            if (line.prompt) {
+                var promptSpan = document.createElement('span');
+                promptSpan.className = 'term-prompt';
+                promptSpan.textContent = '$ ';
+                currentEl.appendChild(promptSpan);
+            }
+            body.appendChild(currentEl);
+        }
+
+        var fullText = line.text;
+        if (charIdx < fullText.length) {
+            if (line.prompt) {
+                var cmdSpan = currentEl.querySelector('.term-cmd');
+                if (!cmdSpan) {
+                    cmdSpan = document.createElement('span');
+                    cmdSpan.className = 'term-cmd';
+                    currentEl.appendChild(cmdSpan);
+                }
+                cmdSpan.textContent = fullText.substring(0, charIdx + 1);
+            } else {
+                var cls = line.success ? 'term-success' : line.warn ? 'term-warn' : 'term-output';
+                currentEl.className = cls;
+                currentEl.textContent = fullText.substring(0, charIdx + 1);
+            }
+            charIdx++;
+            var speed = line.prompt ? 35 : 12;
+            setTimeout(typeNext, speed + Math.random() * 15);
+        } else {
+            lineIdx++;
+            charIdx = 0;
+            currentEl = null;
+            var pause = line.prompt ? 600 : 150;
+            setTimeout(typeNext, pause);
+        }
+
+        while (body.scrollHeight > body.clientHeight) {
+            if (body.firstChild) body.removeChild(body.firstChild);
+            else break;
+        }
     }
-    step();
+
+    setTimeout(typeNext, 800);
+}
+
+function initContactForm() {
+    var form = document.getElementById('contactForm');
+    if (!form) return;
+
+    var successEl = document.getElementById('form-success');
+    var errorEl = document.getElementById('form-error');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (successEl) successEl.style.display = 'none';
+        if (errorEl) errorEl.style.display = 'none';
+
+        var btn = form.querySelector('button[type="submit"]');
+        var originalText = btn ? btn.textContent : '';
+        if (btn) { btn.disabled = true; btn.textContent = 'Transmitting...'; }
+
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        }).then(function(r) {
+            if (r.ok) {
+                if (successEl) { successEl.style.display = 'block'; }
+                form.reset();
+            } else { throw new Error('fail'); }
+        }).catch(function() {
+            if (errorEl) { errorEl.style.display = 'block'; }
+        }).finally(function() {
+            if (btn) { btn.disabled = false; btn.textContent = originalText; }
+        });
+    });
 }
 
 function initCounters() {
