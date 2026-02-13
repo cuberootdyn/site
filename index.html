@@ -23,6 +23,25 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='%23ef4444' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M32 4 L12 14 V30 C12 42 20 54 32 60 C44 54 52 42 52 30 V14 Z' fill='%230f172a'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23ef4444' stroke='none'/%3E%3Cpath d='M32 26 V18 M32 38 V46 M26 32 H18 M38 32 H46' stroke-width='3'/%3E%3C/svg%3E">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Cube Root Dynamics",
+      "image": "https://cuberootdynamics.com/og-image.jpg",
+      "@id": "https://cuberootdynamics.com",
+      "url": "https://cuberootdynamics.com",
+      "telephone": "",
+      "priceRange": "$$$",
+      "description": "Professional offensive security and penetration testing services.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      }
+    }
+    </script>
+
     <!-- Shared SEO Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Cube Root Dynamics">
@@ -68,7 +87,8 @@
     <!-- ... Rest of content ... -->
 
     <header class="hero">
-        <div class="container">
+        <canvas id="matrix-bg"></canvas>
+        <div class="container" style="position: relative; z-index: 2;">
             <h1>Identify Your Weaknesses.<br><span>Before They Are Exploited.</span></h1>
             <p>We believe the only way to truly secure a network is to test it against real-world threats. We help you
                 find vulnerabilities, fix them, and protect your business from significant financial and reputational
@@ -79,6 +99,29 @@
             </div>
         </div>
     </header>
+
+    <section class="track-record">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="450">0</div>
+                    <div class="stat-label">Assessments Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="2400">0</div>
+                    <div class="stat-label">Vulnerabilities Identified</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="15000">0</div>
+                    <div class="stat-label">Ops Hours Logged</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">% Remediation Success</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="about" class="target-segment reveal">
         <div class="container">
@@ -481,6 +524,49 @@
         </div>
     </section>
 
+    <!-- Methodology Section -->
+    <section id="methodology" class="methodology-section reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Kill Chain</h2>
+                <p>We emulate the exact steps sophisticated attackers use to breach your perimeter.</p>
+            </div>
+            <div class="method-steps">
+                <div class="method-step">
+                    <div class="step-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </div>
+                    <h4>1. Reconnaissance</h4>
+                    <p>OSINT gathering, footprint mapping, and asset discovery to identify exposed surfaces.</p>
+                </div>
+                <div class="method-arrow">→</div>
+                <div class="method-step">
+                    <div class="step-icon">
+                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    </div>
+                    <h4>2. Enumeration</h4>
+                    <p>Port scanning, service fingerprinting, and vulnerability identification.</p>
+                </div>
+                <div class="method-arrow">→</div>
+                <div class="method-step">
+                    <div class="step-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h4>3. Exploitation</h4>
+                    <p>Controlled execution of exploits to gain access, escalate privileges, and pivot.</p>
+                </div>
+                <div class="method-arrow">→</div>
+                <div class="method-step">
+                    <div class="step-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <h4>4. Reporting</h4>
+                    <p>Detailed technical findings, impact analysis, and strategic remediation roadmap.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing -->
     <section id="pricing" class="pricing-section reveal">
         <div class="container">
@@ -608,6 +694,14 @@
                         <li><a href="#">Web Application Security</a></li>
                         <li><a href="#">Red Team Operations</a></li>
                         <li><a href="#">Security Advisory</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">PGP Key</a></li>
+                        <li><a href="#">Responsible Disclosure</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>

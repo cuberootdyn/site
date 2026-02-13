@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     initThreatTicker();
     initHamburger();
     initReveal();
+    initMatrixEffect();
+    initCounters();
 });
 
 function initHamburger() {
@@ -335,8 +337,22 @@ function initThreatTicker() {
         { id: 'CVE-2024-3094', severity: 'CRITICAL', desc: 'XZ Utils Supply Chain Attack - Remote Code Execution' },
         { id: 'CVE-2024-21413', severity: 'CRITICAL', desc: 'Microsoft Outlook Moniker Link RCE Vulnerability' },
         { id: 'CVE-2023-4863', severity: 'HIGH', desc: 'Libwebp Heap Buffer Overflow Affecting Major Browsers' },
-        { id: 'ALERT', severity: 'HIGH', desc: 'Active Ransomware Campaigns Targeting Healthcare Sector' },
-        { id: 'CVE-2024-001', severity: 'MEDIUM', desc: 'Cloud Provider API Rate Limiting Bypass' }
+        { id: 'ACTOR-VOLT-TYPHOON', severity: 'CRITICAL', desc: 'Nation-state actor targeting US critical infrastructure pre-positioning' },
+        { id: 'CVE-2024-001', severity: 'MEDIUM', desc: 'Cloud Provider API Rate Limiting Bypass' },
+        { id: 'CVE-2024-23897', severity: 'CRITICAL', desc: 'Jenkins Arbitrary File Read leading to RCE' },
+        { id: 'CVE-2024-3400', severity: 'CRITICAL', desc: 'Palo Alto Networks PAN-OS Command Injection' },
+        { id: 'APT29', severity: 'HIGH', desc: 'Midnight Blizzard campaigns targeting cloud tenants' },
+        { id: 'CVE-2023-23397', severity: 'CRITICAL', desc: 'Microsoft Outlook NTLM Relay Elevation of Privilege' },
+        { id: 'CVE-2023-38831', severity: 'HIGH', desc: 'WinRAR Remote Code Execution via Self-Extracting Archives' },
+        { id: 'CL0P-RANSOMWARE', severity: 'CRITICAL', desc: 'Mass exploitation of file transfer appliances (MOVEit, GoAnywhere)' },
+        { id: 'CVE-2023-4966', severity: 'HIGH', desc: 'Citrix NetScaler Information Disclosure (Citrix Bleed)' },
+        { id: 'SCATTERED-SPIDER', severity: 'HIGH', desc: 'Social engineering campaigns targeting Help Desk workflows' },
+        { id: 'CVE-2024-1709', severity: 'CRITICAL', desc: 'ConnectWise ScreenConnect Authentication Bypass' },
+        { id: 'CVE-2024-21762', severity: 'CRITICAL', desc: 'Fortinet FortiOS Out-of-Bounds Write SSLVPN' },
+        { id: 'BLACKCAT/ALPHV', severity: 'CRITICAL', desc: 'Ransomware-as-a-Service group targeting healthcare sector' },
+        { id: 'CVE-2023-20198', severity: 'CRITICAL', desc: 'Cisco IOS XE Web UI Privilege Escalation' },
+        { id: 'LOCKBIT-3.0', severity: 'HIGH', desc: 'Resurgence of affiliate operations targeting manufacturing' },
+        { id: 'CVE-2023-3519', severity: 'CRITICAL', desc: 'Citrix ADC/Gateway Unauthenticated Remote Code Execution' }
     ];
 
     function doFetch() {
@@ -365,4 +381,56 @@ function initThreatTicker() {
     }
 
     doFetch();
+}
+
+function initMatrixEffect() {
+    var canvas = document.getElementById('matrix-bg');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    
+    var width = canvas.width = window.innerWidth;
+    var height = canvas.height = window.innerHeight;
+    
+    var cols = Math.floor(width / 20);
+    var ypos = Array(cols).fill(0);
+    
+    window.addEventListener('resize', function() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        cols = Math.floor(width / 20);
+        ypos = Array(cols).fill(0);
+    });
+
+    function step() {
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.05)';
+        ctx.fillRect(0, 0, width, height);
+        
+        ctx.fillStyle = '#ef4444';
+        ctx.font = '15px monospace';
+        
+        ypos.forEach(function(y, ind) {
+            var text = String.fromCharCode(0x30A0 + Math.random() * 96);
+            var x = ind * 20;
+            ctx.fillText(text, x, y);
+            if (y > 100 + Math.random() * 10000) ypos[ind] = 0;
+            else ypos[ind] = y + 20;
+        });
+        requestAnimationFrame(step);
+    }
+    step();
+}
+
+function initCounters() {
+    var stats = document.querySelectorAll('.stat-number');
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if(entry.isIntersecting) {
+                var target = parseInt(entry.target.getAttribute('data-target'));
+                animateValue(entry.target, 0, target, 2500);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    stats.forEach(function(s) { observer.observe(s); });
 }
