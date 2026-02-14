@@ -22,6 +22,8 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='%23dc2626' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M32 4 L12 14 V30 C12 42 20 54 32 60 C44 54 52 42 52 30 V14 Z' fill='%230a0a0f'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23dc2626' stroke='none'/%3E%3Cpath d='M32 26 V18 M32 38 V46 M26 32 H18 M38 32 H46' stroke-width='3'/%3E%3C/svg%3E">
@@ -65,7 +67,7 @@
                 <a href="#methodology">Process</a>
                 <a href="#risk-calculator">Risk Engine</a>
                 <a href="#pricing">Engage</a>
-                <a href="#contact" class="nav-cta">Start Ops</a>
+                <a href="#contact" class="nav-cta" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/cuberootdynamics/discovery'});return false;">Start Ops</a>
             </div>
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span><span></span><span></span>
@@ -82,7 +84,7 @@
                 <h1>We Break In.<br>So Real Attackers Can't.</h1>
                 <p class="hero-sub">We are an operator-led firm simulating sophisticated adversaries. No automated scans. No false positives. Just raw, actionable impact.</p>
                 <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary">Start an Assessment</a>
+                    <a href="#contact" class="btn btn-primary" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/cuberootdynamics/discovery'});return false;">Start an Assessment</a>
                     <a href="#methodology" class="btn btn-ghost">View Our Approach</a>
                 </div>
             </div>
@@ -339,7 +341,7 @@
                     <h3>Think you're secure? Let us prove it.</h3>
                     <p>Most organizations don't know they've been breached until it's too late. A single engagement can change that.</p>
                 </div>
-                <a href="#contact" class="btn btn-primary">Request a Scoping Call</a>
+                <a href="#contact" class="btn btn-primary" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/cuberootdynamics/discovery'});return false;">Request a Scoping Call</a>
             </div>
         </div>
     </section>
@@ -423,7 +425,7 @@
                         </div>
                         <span class="slots-text">8 of 10 spots remaining</span>
                     </div>
-                    <a href="#contact" class="btn btn-primary founding-cta">Claim Your Spot</a>
+                    <a href="#contact" class="btn btn-primary founding-cta" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/cuberootdynamics/discovery'});return false;">Claim Your Spot</a>
                 </div>
                 <div class="founding-sidebar">
                     <div class="founding-quote-card">
@@ -671,7 +673,7 @@
 
                     <div class="dash-actions">
                          <button class="btn btn-secondary" onclick="window.print()">Export Report</button>
-                         <a href="#contact" class="btn btn-primary">Discuss with Our Team</a>
+                         <a href="#contact" class="btn btn-primary" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/cuberootdynamics/discovery'});return false;">Discuss with Our Team</a>
                     </div>
                 </div>
             </div>
@@ -694,7 +696,7 @@
                         <li>Remediation Roadmap</li>
                         <li>Executive Debrief</li>
                     </ul>
-                    <a href="#contact" class="btn btn-ghost">Get Quote</a>
+                    <a href="#contact" class="btn btn-ghost" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/cuberootdynamics/discovery'});return false;">Get Quote</a>
                 </div>
                 <div class="price-card featured">
                     <div class="badge">POPULAR</div>
@@ -707,7 +709,7 @@
                         <li>Remediation Verification</li>
                         <li>Priority Scheduling</li>
                     </ul>
-                    <a href="#contact" class="btn btn-primary">Start Partnership</a>
+                    <a href="#contact" class="btn btn-primary" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/cuberootdynamics/discovery'});return false;">Start Partnership</a>
                 </div>
                 <div class="price-card">
                     <h3>Enterprise</h3>
@@ -719,7 +721,7 @@
                         <li>Custom Training</li>
                         <li>Dedicated Account Manager</li>
                     </ul>
-                    <a href="#contact" class="btn btn-ghost">Contact Sales</a>
+                    <a href="#contact" class="btn btn-ghost" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/cuberootdynamics/discovery'});return false;">Contact Sales</a>
                 </div>
             </div>
         </div>
@@ -837,5 +839,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </body>
 </html>
