@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initCounters();
     initTerminal();
     initParticles();
+    initReveal();
     
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -201,7 +202,26 @@ function initParticles() {
     animate();
 }
 
-/* --- 5. Threat Ticker --- */
+/* --- 5. Reveal Animation --- */
+function initReveal() {
+    var sections = document.querySelectorAll('.reveal');
+    if (!sections.length) return;
+    
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    sections.forEach(function(s) {
+        observer.observe(s);
+    });
+}
+
+/* --- 6. Threat Ticker --- */
 function initThreatTicker() {
     var tickerContent = document.getElementById('ticker-content');
     if (!tickerContent) return;
